@@ -40,9 +40,13 @@ createConnection().then(connection => {
 
     app.put("/boards/:id", async (req: Request, res: Response) => {
         console.log('req body ::', req.body, '\nreqParams ::', req.params)
-        await cardRepository.update(req.params.id, req.body);
-        const card = await cardRepository.findOne(req.params.id);
-        card ? res.status(200).send( card) : res.sendStatus(400);
+        const newCard = new Card(req.body);                                          
+
+        const card = await cardRepository.update({ id: req.params.id}, newCard);
+//         const cardToUpdate = await cardRepository.findOne(req.params.id);
+//         cardToUpdate = req.body;
+//         const card = await cardRepository.save(cardToUpdate);
+        card ? res.status(200).send(card) : res.sendStatus(400);
     })
     // start express server
     const server = app.listen(process.env.PORT || 7777, () => {
