@@ -39,13 +39,8 @@ createConnection().then(connection => {
          });
 
     app.put("/boards/:id", async (req: Request, res: Response) => {
-        console.log('req body ::', req.body, '\nreqParams ::', req.params)
-        const newCard = new Card(req.body);                                          
-
-        const card = await cardRepository.update({ id: req.params.id}, newCard);
-//         const cardToUpdate = await cardRepository.findOne(req.params.id);
-//         cardToUpdate = req.body;
-//         const card = await cardRepository.save(cardToUpdate);
+        console.log('req body ::', req.body, '\nreqParams ::', req.params)                                       
+        const card = await cardRepository.update({ id: req.params.id}, req.body);
         card ? res.status(200).send(card) : res.sendStatus(400);
     })
     // start express server
