@@ -1,0 +1,14 @@
+@import '@angular/material/prebuilt-themes/purple-green.css';
+
+html,
+body {
+    min-height: 100vh;
+    background-image: url(./assets/background.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+body {
+    margin: 0;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+}

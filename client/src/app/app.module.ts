@@ -1,28 +1,18 @@
-import { HttpClientModule } from "@angular/common/http";
-import { NgModule } from "@angular/core";
-import { CommonModule } from '@angular/common';
-import { FormsModule } from "@angular/forms";
-import { BrowserModule } from "@angular/platform-browser";
-import { AppComponent } from "./app.component";
-import { KanbanBoardComponent } from "./components/kanban-board/kanban-board.component";
-
-import { KanbanBoardService } from "./service/kanban-board.service";
-import { NgDragDropModule } from "ng-drag-drop";
-
-
+import { NgModule } from '@angular/core'
+import { MatListModule } from '@angular/material/list'
+import { BrowserModule } from '@angular/platform-browser'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { AppRoutingModule } from './app-routing.module'
+import { AppComponent } from './app.component'
+import { KanbanComponent } from './component/kanban/kanban.component'
+import { MainComponent } from './component/main/main.component'
+import { KanbanService } from './service/kanban.service'
+import { TaskService } from './service/task.service'
 
 @NgModule({
-  declarations: [AppComponent, KanbanBoardComponent],
-  imports: [
-    CommonModule,
-    BrowserModule,
-    FormsModule,
-    HttpClientModule,
-    NgDragDropModule.forRoot(),
-
-
-  ],
-  providers: [KanbanBoardService],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent, KanbanComponent, MainComponent],
+    imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatListModule],
+    providers: [KanbanService, TaskService],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}

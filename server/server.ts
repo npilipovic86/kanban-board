@@ -1,52 +1,31 @@
-import * as bodyParser from "body-parser";
-import * as express from "express";
-import { Request, Response } from "express";
-import { createConnection } from "typeorm";
-import { Card } from "./entity/card.entity";
+import * as bodyParser from 'body-parser'
+import * as express from 'express'
+import * as helmet from 'helmet'
+import { createConnection } from 'typeorm'
+import router from './app/router'
 // import * as open from "open";//open browser tab
 
-createConnection().then(connection => {
-    //connection to db 
-    const cardRepository = connection.getRepository(Card);
-    const app = express();
+const app = express()
+app.use(express.static('public')) //STATIC files
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json()) // Body parser use JSON data
+app.use(helmet()) // security config
+// connect the api routes under /api/*
+app.use('/api', router)
 
-    app.use(express.static('public'));   //STATIC files
-    app.use(bodyParser.urlencoded({ extended: true }));
-    app.use(bodyParser.json()); // Body parser use JSON data
+// prevent 404
+app.get('*', (req, res) => {
+    res.sendFile('/public/index.html', { root: __dirname })
+})
 
-    // register routes
-    app.get("/boards", async (req: Request, res: Response) => {
-        const cards = await cardRepository.find();
-        cards ? res.send(cards) : res.sendStatus(204);
-    });
+// connect to db
+createConnection()
+    .then(() => console.log('db connected'))
+    .catch((error) => console.log('TypeORM connection error: ', error))
 
-    app.get("/boards/:id", async (req: Request, res: Response) => {
-        console.log('req body ::', req.body, '\nreqParams ::', req.params)
-        const retVal = await cardRepository.findOne(req.params.id);
-        retVal ? res.send(retVal) : res.sendStatus(204);
-    });
-
-    app.post("/boards", async (req: Request, res: Response) => {
-        console.log('req body ::', req.body, '\nreqParams ::', req.params)
-        const card = await cardRepository.create(req.body);
-        card ? res.status(201).send(await cardRepository.save(card)) : res.sendStatus(400);
-    });
-
-    app.delete("/boards/:id", async (req: Request, res: Response) => {
-        console.log('req body ::', req.body, '\nreqParams ::', req.params)
-        const card = await cardRepository.findOne(req.params.id);
-        card ? res.status(204).send(await cardRepository.remove(card)) : res.sendStatus(404);
-         });
-
-    app.put("/boards/:id", async (req: Request, res: Response) => {
-        console.log('req body ::', req.body, '\nreqParams ::', req.params)                                       
-        const card = await cardRepository.update({ id: req.params.id}, req.body);
-        card ? res.status(200).send(card) : res.sendStatus(400);
-    })
-    // start express server
-    const server = app.listen(process.env.PORT || 7777, () => {
-        const port = server.address().port;
-        console.log("Server started at: http://localhost:" + port + "\nOpening browser ...");
-        // open("http://localhost:" + port);
-    });
-});
+// start express server
+const server = app.listen(process.env.PORT || 7711, () => {
+    const port = server.address().port
+    console.log('Server started at: http://localhost:' + port + '\nOpening browser ...')
+    // open("http://localhost:" + port);
+})

@@ -1,3 +1,4 @@
-{   
-    "ignore": ["/*.json"] 
+{
+    "watch": ["public/", "*"],
+    "ignore": ["/*.json", "node_modules/*"]
 }
