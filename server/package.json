@@ -17,7 +17,7 @@
         "mysql": "^2.16.0",
         "nodemon": "^1.18.5",
         "npm": "^6.4.1",
-        "open": "0.0.5",
+        "open": "6.0.0",
         "reflect-metadata": "^0.1.12",
         "ts-node": "^3.3.0",
         "typeorm": "^0.2.8",
