@@ -3,6 +3,7 @@
     "rules": {
         "indent": [false, "spaces", 2],
         "label-position": false,
+        "max-line-length": [true, 150],
         "no-unused-expression": false,
         "no-trailing-whitespace": false,
         "arrow-parens": true,

@@ -1,0 +1,25 @@
+.container {
+    text-align: center;
+
+    & .mat-list-item {
+        margin: 1rem;
+        width: auto !important;
+    }
+    & .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 1rem;
+
+        & a {
+            text-decoration: none;
+        }
+    }
+    & .mat-card {
+        transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+        display: block;
+        position: relative;
+        padding: 1em;
+        border-radius: 4px;
+    }
+}

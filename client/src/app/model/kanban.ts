@@ -1,7 +1,8 @@
 import { Task } from './task'
 
 export interface Kanban {
-    id: String
-    title: String
+    id: string
+    title: string
+    timestamp: string
     tasks: Task[]
 }

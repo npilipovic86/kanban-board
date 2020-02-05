@@ -11,7 +11,6 @@ export const getAll = async (req: Request, res: Response) => {
         console.log(e)
     }
     retVal ? res.send(retVal) : res.sendStatus(204)
-    // res.send(retVal)
 }
 export const getById = async (req: Request, res: Response) => {
     let repository: TaskRepository = new TaskRepository()

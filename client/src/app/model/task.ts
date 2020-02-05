@@ -1,7 +1,8 @@
 export interface Task {
-    id: String
-    title: String
-    description: String
-    color: String
-    status: String
+    id: string
+    title: string
+    description: string
+    color: string
+    status: string
+    timestamp: string
 }

@@ -1,10 +1,9 @@
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { Kanban } from './kanban.entity'
-
 @Entity()
 export class Task {
     @PrimaryGeneratedColumn('uuid')
-    id?: string
+    id: string
 
     @Column()
     title: string
@@ -17,6 +16,9 @@ export class Task {
 
     @Column()
     status: string
+
+    @CreateDateColumn()
+    timestamp: string
 
     @ManyToOne(
         (type) => Kanban,
