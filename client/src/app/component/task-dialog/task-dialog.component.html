@@ -1,1 +1,19 @@
-<p>task-dialog works!</p>
+<h1 mat-dialog-title>{{ kanbanTitle }}</h1>
+
+<mat-dialog-content [formGroup]="form" class="dialog-content">
+    <mat-form-field>
+        <input matInput placeholder="Title" formControlName="title" class="task-title" />
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput placeholder="Color" type="color" formControlName="color" />
+    </mat-form-field>
+    <mat-form-field>
+        <textarea matInput placeholder="Description" formControlName="description" class="description-area"> </textarea>
+    </mat-form-field>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button class="mat-raised-button" (click)="close()">Close</button>
+    <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
+</mat-dialog-actions>

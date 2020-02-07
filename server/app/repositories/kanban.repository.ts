@@ -17,15 +17,17 @@ export class KanbanRepository {
         return await this.repository.remove(item)
     }
 
-    async getById(id: number) {
+    async getById(id: string) {
         return await this.repository.findOne(id)
     }
-    async update(id: number, newItem: Kanban) {
+    async update(id: string, newItem: Kanban) {
         return await this.repository.update(id, newItem)
     }
-    async addNewTask(id: number, task: Task) {
-        const kanban = await this.getById(id)
+    async addNewTask(kanbanId: string, task: Task) {
+        const kanban = await this.getById(kanbanId)
         kanban.tasks.push(task)
-        return await this.repository.save(kanban)
+        let retVal = await this.repository.save(kanban)
+        let result = retVal.tasks.find((t) => t.description === task.description && t.title === task.title && t.color === task.color)
+        return result
     }
 }

@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"page-title\">\n        <h1>{{ kanban?.title }}</h1>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"openDialogForNewTask()\">+ Create Task</button>\n    </div>\n    <div class=\"kanban-board\">\n        <div class=\"list-container\">\n            <h2>To do</h2>\n            <div\n                cdkDropList\n                id=\"todo\"\n                [cdkDropListData]=\"todos\"\n                [cdkDropListConnectedTo]=\"['inpro', 'done']\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div\n                    class=\"sticky-note\"\n                    *ngFor=\"let task of todos\"\n                    cdkDrag\n                    [style.background-color]=\"task.color\"\n                    (dblclick)=\"openTaskDialog($event)\"\n                    id=\"{{ task.id }}\"\n                >\n                    {{ task.title }}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"list-container\">\n            <h2>In Progress</h2>\n            <div\n                cdkDropList\n                id=\"inpro\"\n                [cdkDropListData]=\"inprogress\"\n                [cdkDropListConnectedTo]=\"['todo', 'done']\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div\n                    class=\"sticky-note\"\n                    *ngFor=\"let task of inprogress\"\n                    cdkDrag\n                    [style.background-color]=\"task.color\"\n                    (dblclick)=\"openTaskDialog($event)\"\n                    id=\"{{ task.id }}\"\n                >\n                    {{ task.title }}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"list-container\">\n            <h2>Done</h2>\n            <div\n                cdkDropList\n                id=\"done\"\n                [cdkDropListData]=\"dones\"\n                [cdkDropListConnectedTo]=\"['todo', 'inpro']\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div\n                    class=\"sticky-note\"\n                    *ngFor=\"let task of dones\"\n                    cdkDrag\n                    [style.background-color]=\"task.color\"\n                    (dblclick)=\"openTaskDialog($event)\"\n                    id=\"{{ task.id }}\"\n                >\n                    {{ task.title }}\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"page-title\">\n        <h1>{{ kanban?.title }}</h1>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"openDialogForNewTask()\">Create New Task</button>\n    </div>\n    <div class=\"kanban-board\">\n        <div class=\"list-container\">\n            <h2>To do</h2>\n            <div\n                cdkDropList\n                id=\"todo\"\n                [cdkDropListData]=\"todos\"\n                [cdkDropListConnectedTo]=\"['inpro', 'done']\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div\n                    class=\"sticky-note\"\n                    *ngFor=\"let task of todos\"\n                    cdkDrag\n                    [style.background-color]=\"task.color\"\n                    (dblclick)=\"openTaskDialog($event)\"\n                    id=\"{{ task.id }}\"\n                >\n                    {{ task.title }}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"list-container\">\n            <h2>In Progress</h2>\n            <div\n                cdkDropList\n                id=\"inpro\"\n                [cdkDropListData]=\"inProgress\"\n                [cdkDropListConnectedTo]=\"['todo', 'done']\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div\n                    class=\"sticky-note\"\n                    *ngFor=\"let task of inProgress\"\n                    cdkDrag\n                    [style.background-color]=\"task.color\"\n                    (dblclick)=\"openTaskDialog($event)\"\n                    id=\"{{ task.id }}\"\n                >\n                    {{ task.title }}\n                </div>\n            </div>\n        </div>\n\n        <div class=\"list-container\">\n            <h2>Done</h2>\n            <div\n                cdkDropList\n                id=\"done\"\n                [cdkDropListData]=\"dones\"\n                [cdkDropListConnectedTo]=\"['todo', 'inpro']\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div\n                    class=\"sticky-note\"\n                    *ngFor=\"let task of dones\"\n                    cdkDrag\n                    [style.background-color]=\"task.color\"\n                    (dblclick)=\"openTaskDialog($event)\"\n                    id=\"{{ task.id }}\"\n                >\n                    {{ task.title }}\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n");
 
 /***/ }),
 
@@ -71,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div>\n        <h2>Boards</h2>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"openDialogForNewKanban()\">Create New Kanban Board</button>\n    </div>\n    <br />\n    <mat-divider></mat-divider>\n    <mat-list class=\"list\">\n        <mat-list-item class=\"list\" *ngFor=\"let item of boards\">\n            <a routerLink=\"/kanbans/{{ item.id }}\">\n                <mat-card>\n                    <mat-card-title>{{ item.title }}</mat-card-title>\n                    <mat-card-subtitle>{{ fixTimestamp(item.timestamp) }}</mat-card-subtitle>\n                </mat-card>\n            </a>\n        </mat-list-item>\n    </mat-list>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div>\n        <h2>Boards</h2>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"openDialogForNewKanban()\">Create New Kanban Board</button>\n    </div>\n    <br />\n    <mat-divider></mat-divider>\n    <mat-list class=\"list\">\n        <mat-list-item class=\"list\" *ngFor=\"let item of boards\">\n            <a routerLink=\"/kanbans/{{ item.id }}\">\n                <mat-card>\n                    <mat-card-title>{{ item?.title }}</mat-card-title>\n                    <mat-card-subtitle>{{ fixTimestamp(item?.timestamp) }}</mat-card-subtitle>\n                </mat-card>\n            </a>\n        </mat-list-item>\n    </mat-list>\n</div>\n");
 
 /***/ }),
 
@@ -84,7 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>task-dialog works!</p>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1 mat-dialog-title>{{ kanbanTitle }}</h1>\n\n<mat-dialog-content [formGroup]=\"form\" class=\"dialog-content\">\n    <mat-form-field>\n        <input matInput placeholder=\"Title\" formControlName=\"title\" class=\"task-title\" />\n    </mat-form-field>\n\n    <mat-form-field>\n        <input matInput placeholder=\"Color\" type=\"color\" formControlName=\"color\" />\n    </mat-form-field>\n    <mat-form-field>\n        <textarea matInput placeholder=\"Description\" formControlName=\"description\" class=\"description-area\"> </textarea>\n    </mat-form-field>\n</mat-dialog-content>\n\n<mat-dialog-actions>\n    <button class=\"mat-raised-button\" (click)=\"close()\">Close</button>\n    <button class=\"mat-raised-button mat-primary\" (click)=\"save()\">Save</button>\n</mat-dialog-actions>\n");
 
 /***/ }),
 
@@ -425,9 +425,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _component_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./component/kanban-dialog/kanban-dialog.component */ "./src/app/component/kanban-dialog/kanban-dialog.component.ts");
 /* harmony import */ var _component_kanban_kanban_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./component/kanban/kanban.component */ "./src/app/component/kanban/kanban.component.ts");
 /* harmony import */ var _component_main_main_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./component/main/main.component */ "./src/app/component/main/main.component.ts");
-/* harmony import */ var _service_kanban_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./service/kanban.service */ "./src/app/service/kanban.service.ts");
-/* harmony import */ var _service_task_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./service/task.service */ "./src/app/service/task.service.ts");
-/* harmony import */ var _component_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./component/task-dialog/task-dialog.component */ "./src/app/component/task-dialog/task-dialog.component.ts");
+/* harmony import */ var _component_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./component/task-dialog/task-dialog.component */ "./src/app/component/task-dialog/task-dialog.component.ts");
+/* harmony import */ var _service_kanban_service__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./service/kanban.service */ "./src/app/service/kanban.service.ts");
+/* harmony import */ var _service_task_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./service/task.service */ "./src/app/service/task.service.ts");
 
 
 
@@ -451,7 +451,7 @@ let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"])({
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"], _component_kanban_kanban_component__WEBPACK_IMPORTED_MODULE_14__["KanbanComponent"], _component_main_main_component__WEBPACK_IMPORTED_MODULE_15__["MainComponent"], _component_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_13__["KanbanDialogComponent"], _component_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_18__["TaskDialogComponent"]],
+        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"], _component_kanban_kanban_component__WEBPACK_IMPORTED_MODULE_14__["KanbanComponent"], _component_main_main_component__WEBPACK_IMPORTED_MODULE_15__["MainComponent"], _component_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_13__["KanbanDialogComponent"], _component_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_16__["TaskDialogComponent"]],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_9__["BrowserModule"],
             _app_routing_module__WEBPACK_IMPORTED_MODULE_11__["AppRoutingModule"],
@@ -467,9 +467,9 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"]
         ],
-        providers: [_service_kanban_service__WEBPACK_IMPORTED_MODULE_16__["KanbanService"], _service_task_service__WEBPACK_IMPORTED_MODULE_17__["TaskService"]],
+        providers: [_service_kanban_service__WEBPACK_IMPORTED_MODULE_17__["KanbanService"], _service_task_service__WEBPACK_IMPORTED_MODULE_18__["TaskService"]],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_12__["AppComponent"]],
-        entryComponents: [_component_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_13__["KanbanDialogComponent"]]
+        entryComponents: [_component_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_13__["KanbanDialogComponent"], _component_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_16__["TaskDialogComponent"]]
     })
 ], AppModule);
 
@@ -526,8 +526,8 @@ let KanbanDialogComponent = class KanbanDialogComponent {
     save() {
         this.title = this.form.get('title').value;
         if (this.title) {
-            this._service.create(this.title).subscribe((response) => {
-                this.dialogRef.close(response);
+            this._service.create(this.title).subscribe((result) => {
+                this.dialogRef.close(result);
             });
         }
     }
@@ -575,16 +575,99 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "KanbanComponent", function() { return KanbanComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/cdk/drag-drop */ "./node_modules/@angular/cdk/esm2015/drag-drop.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_service_kanban_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/kanban.service */ "./src/app/service/kanban.service.ts");
+/* harmony import */ var src_app_service_task_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/service/task.service */ "./src/app/service/task.service.ts");
+/* harmony import */ var _task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../task-dialog/task-dialog.component */ "./src/app/component/task-dialog/task-dialog.component.ts");
+
+
+
+
+
+
 
 
 let KanbanComponent = class KanbanComponent {
-    constructor() { }
+    constructor(_kanbanService, _taskService, route, dialog) {
+        this._kanbanService = _kanbanService;
+        this._taskService = _taskService;
+        this.route = route;
+        this.dialog = dialog;
+        this.dones = [];
+        this.todos = [];
+        this.inProgress = [];
+        this.dones = [];
+    }
     ngOnInit() {
+        this.getKanban();
+    }
+    openDialogForNewTask() {
+        const dialogConfig = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogConfig"]();
+        dialogConfig.autoFocus = true;
+        dialogConfig.data = {
+            title: 'Create New Task',
+            kanbanId: this.kanban.id
+        };
+        this.dialog
+            .open(_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_7__["TaskDialogComponent"], dialogConfig)
+            .afterClosed()
+            .subscribe((result) => {
+            console.log('TCL: KanbanComponent -> result', result);
+            this.kanban.tasks.push(result);
+            this.splitTasksByStatus(this.kanban.tasks);
+        });
+    }
+    drop(event) {
+        if (event.previousContainer === event.container) {
+            Object(_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_1__["moveItemInArray"])(event.container.data, event.previousIndex, event.currentIndex);
+        }
+        else {
+            this.updateTaskStatusAfterDragDrop(event);
+            Object(_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_1__["transferArrayItem"])(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+        }
+    }
+    updateTaskStatusAfterDragDrop(event) {
+        let taskId = event.item.element.nativeElement.id;
+        let containerId = event.container.id;
+        let task = this.kanban.tasks.find((e) => e.id === taskId);
+        this.updateTaskStatus(task, containerId);
+    }
+    getKanban() {
+        const id = this.route.snapshot.paramMap.get('id');
+        this._kanbanService.getById(id).subscribe((response) => {
+            this.kanban = response;
+            this.splitTasksByStatus(this.kanban.tasks);
+        });
+    }
+    updateTaskStatus(task, containerId) {
+        if (containerId === 'todo') {
+            task.status = 'TODO';
+        }
+        else if (containerId === 'inpro') {
+            task.status = 'INPROGRESS';
+        }
+        else {
+            task.status = 'DONE';
+        }
+        this._taskService.update(task).subscribe();
+    }
+    splitTasksByStatus(tasks) {
+        this.todos = tasks.filter((t) => t.status === 'TODO');
+        this.inProgress = tasks.filter((t) => t.status === 'INPROGRESS');
+        this.dones = tasks.filter((t) => t.status === 'DONE');
     }
 };
+KanbanComponent.ctorParameters = () => [
+    { type: src_app_service_kanban_service__WEBPACK_IMPORTED_MODULE_5__["KanbanService"] },
+    { type: src_app_service_task_service__WEBPACK_IMPORTED_MODULE_6__["TaskService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
+    { type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialog"] }
+];
 KanbanComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
         selector: 'app-kanban',
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./kanban.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/component/kanban/kanban.component.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./kanban.component.scss */ "./src/app/component/kanban/kanban.component.scss")).default]
@@ -705,21 +788,86 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TaskDialogComponent", function() { return TaskDialogComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+/* harmony import */ var src_app_model_task__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/model/task */ "./src/app/model/task.ts");
+/* harmony import */ var src_app_service_kanban_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/service/kanban.service */ "./src/app/service/kanban.service.ts");
+/* harmony import */ var src_app_service_task_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/service/task.service */ "./src/app/service/task.service.ts");
+
+
+
+
+
 
 
 let TaskDialogComponent = class TaskDialogComponent {
-    constructor() { }
+    constructor(fb, dialogRef, data, kanbanService, taskService) {
+        this.fb = fb;
+        this.dialogRef = dialogRef;
+        this.kanbanService = kanbanService;
+        this.taskService = taskService;
+        this.kanbanTitle = data.title;
+        this.kanbanId = data.kanbanId;
+        this.task = new src_app_model_task__WEBPACK_IMPORTED_MODULE_4__["Task"]();
+    }
     ngOnInit() {
+        this.form = this.fb.group({
+            title: [this.task.title, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            description: [this.task.description, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            color: [this.task.color, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            status: ['TODO']
+        });
+    }
+    close(task) {
+        this.dialogRef.close(task);
+    }
+    save() {
+        if (!this.task.id) {
+            this.kanbanService.saveNewTaskInKanban(this.kanbanId, this.form.value).subscribe((response) => {
+                this.close(response);
+            });
+        }
+        else {
+            this.taskService.update(this.form.value).subscribe((response) => {
+                this.close(response);
+            });
+        }
     }
 };
+TaskDialogComponent.ctorParameters = () => [
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+    { type: _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogRef"] },
+    { type: undefined, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"],] }] },
+    { type: src_app_service_kanban_service__WEBPACK_IMPORTED_MODULE_5__["KanbanService"] },
+    { type: src_app_service_task_service__WEBPACK_IMPORTED_MODULE_6__["TaskService"] }
+];
 TaskDialogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-task-dialog',
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./task-dialog.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/component/task-dialog/task-dialog.component.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./task-dialog.component.scss */ "./src/app/component/task-dialog/task-dialog.component.scss")).default]
-    })
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material__WEBPACK_IMPORTED_MODULE_3__["MAT_DIALOG_DATA"]))
 ], TaskDialogComponent);
 
+
+
+/***/ }),
+
+/***/ "./src/app/model/task.ts":
+/*!*******************************!*\
+  !*** ./src/app/model/task.ts ***!
+  \*******************************/
+/*! exports provided: Task */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Task", function() { return Task; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+class Task {
+}
 
 
 /***/ }),
@@ -760,6 +908,11 @@ let KanbanService = class KanbanService {
     update(pbe) {
         return this._http.put(this.path + '/' + pbe.id, pbe);
     }
+    saveNewTaskInKanban(kanbanId, task) {
+        // let headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+        // let options = { headers: headers }
+        return this._http.post(this.path + '/' + kanbanId + '/tasks', task);
+    }
 };
 KanbanService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] }
@@ -799,7 +952,7 @@ let TaskService = class TaskService {
         return this._http.get(this.path);
     }
     getById(id) {
-        return this._http.get(this.path);
+        return this._http.get(this.path + '/' + id);
     }
     delete(pbe) {
         return this._http.delete(this.path + '/' + pbe.id);

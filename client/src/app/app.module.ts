@@ -13,9 +13,10 @@ import { AppComponent } from './app.component'
 import { KanbanDialogComponent } from './component/kanban-dialog/kanban-dialog.component'
 import { KanbanComponent } from './component/kanban/kanban.component'
 import { MainComponent } from './component/main/main.component'
-import { KanbanService } from './service/kanban.service'
-import { TaskService } from './service/task.service';
 import { TaskDialogComponent } from './component/task-dialog/task-dialog.component'
+import { KanbanService } from './service/kanban.service'
+import { TaskService } from './service/task.service'
+
 @NgModule({
     declarations: [AppComponent, KanbanComponent, MainComponent, KanbanDialogComponent, TaskDialogComponent],
     imports: [
@@ -35,6 +36,6 @@ import { TaskDialogComponent } from './component/task-dialog/task-dialog.compone
     ],
     providers: [KanbanService, TaskService],
     bootstrap: [AppComponent],
-    entryComponents: [KanbanDialogComponent]
+    entryComponents: [KanbanDialogComponent, TaskDialogComponent]
 })
 export class AppModule {}

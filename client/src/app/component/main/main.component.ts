@@ -11,6 +11,7 @@ import { KanbanDialogComponent } from '../kanban-dialog/kanban-dialog.component'
 })
 export class MainComponent implements OnInit {
     private boards: Kanban[]
+
     constructor(private _service: KanbanService, private dialog: MatDialog) {
         this.boards = []
     }
@@ -28,7 +29,7 @@ export class MainComponent implements OnInit {
             .join(' ')
             .toString()
     }
-    openDialogForNewKanban() {
+    openDialogForNewKanban(): void {
         const dialogConfig = new MatDialogConfig<Kanban>()
         dialogConfig.autoFocus = true
         this.dialog

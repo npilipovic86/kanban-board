@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { Kanban } from '../model/kanban'
+import { Task } from '../model/task'
 
 @Injectable({
     providedIn: 'root'
@@ -25,5 +26,10 @@ export class KanbanService {
     }
     update(pbe: Kanban): Observable<Kanban> {
         return this._http.put<Kanban>(this.path + '/' + pbe.id, pbe)
+    }
+    saveNewTaskInKanban(kanbanId: string, task: Task): Observable<Task> {
+        // let headers = new HttpHeaders({ 'Content-Type': 'application/json' })
+        // let options = { headers: headers }
+        return this._http.post<Task>(this.path + '/' + kanbanId + '/tasks', task)
     }
 }

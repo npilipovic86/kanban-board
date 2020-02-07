@@ -16,10 +16,10 @@ export class TaskRepository {
         return await this.repository.remove(item)
     }
 
-    async getById(id: number) {
+    async getById(id: string) {
         return await this.repository.findOne(id)
     }
-    async update(id: number, newItem: Task) {
+    async update(id: string, newItem: Task) {
         return await this.repository.update(id, newItem)
     }
 }

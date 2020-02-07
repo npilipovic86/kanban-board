@@ -13,6 +13,7 @@ export const getAll = async (req: Request, res: Response) => {
 
     retVal ? res.send(retVal) : res.sendStatus(204)
 }
+
 export const getById = async (req: Request, res: Response) => {
     let repository: KanbanRepository = new KanbanRepository()
     let retVal
@@ -25,6 +26,7 @@ export const getById = async (req: Request, res: Response) => {
 
     retVal ? res.send(retVal) : res.sendStatus(204)
 }
+
 export const save = async (req: Request, res: Response) => {
     let repository: KanbanRepository = new KanbanRepository()
     let retVal
@@ -50,6 +52,7 @@ export const remove = async (req: Request, res: Response) => {
 
     retVal ? res.status(204).send(retVal) : res.sendStatus(404)
 }
+
 export const update = async (req: Request, res: Response) => {
     let repository: KanbanRepository = new KanbanRepository()
     let retVal

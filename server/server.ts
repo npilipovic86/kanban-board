@@ -3,7 +3,6 @@ import * as express from 'express'
 import * as helmet from 'helmet'
 import { createConnection } from 'typeorm'
 import router from './app/router'
-// import * as open from "open";//open browser tab
 
 const app = express()
 app.use(express.static('public')) //STATIC files
@@ -27,5 +26,4 @@ createConnection()
 const server = app.listen(process.env.PORT || 7711, () => {
     const port = server.address().port
     console.log('Server started at: http://localhost:' + port + '\nOpening browser ...')
-    // open("http://localhost:" + port);
 })

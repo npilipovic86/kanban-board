@@ -32,8 +32,8 @@ export class KanbanDialogComponent implements OnInit {
     save() {
         this.title = this.form.get('title').value
         if (this.title) {
-            this._service.create(this.title).subscribe((response) => {
-                this.dialogRef.close(response)
+            this._service.create(this.title).subscribe((result) => {
+                this.dialogRef.close(result)
             })
         }
     }

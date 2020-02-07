@@ -24,7 +24,7 @@ export class Kanban {
     @OneToMany(
         (type) => Task,
         (task) => task.kanban,
-        { cascade: ['insert', 'update', 'remove'] }
+        { cascade: ['insert', 'update', 'remove'], eager: true }
     )
     tasks?: Task[]
 }
