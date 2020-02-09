@@ -1,6 +1,6 @@
 import { Task } from './task'
 
-export interface Kanban {
+export class Kanban {
     id?: string
     title?: string
     timestamp?: string

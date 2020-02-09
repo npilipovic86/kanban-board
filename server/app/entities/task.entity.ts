@@ -22,7 +22,9 @@ export class Task {
 
     @ManyToOne(
         (type) => Kanban,
-        (kanban) => kanban.tasks
+        (kanban) => kanban.tasks,
+        { onDelete: 'CASCADE' }
+        // onUpdate: 'CASCADE'
     )
     @JoinColumn({ name: 'kanban_id', referencedColumnName: 'id' })
     kanban: Kanban

@@ -42,7 +42,7 @@ export const remove = async (req: Request, res: Response) => {
     let retVal
 
     try {
-        retVal = await repository.delete(req.body)
+        retVal = await repository.delete(req.params.id)
     } catch (e) {
         console.log(e)
     }

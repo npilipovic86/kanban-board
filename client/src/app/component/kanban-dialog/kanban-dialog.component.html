@@ -1,14 +1,19 @@
 <div class="dialog-title">
-    <h1 mat-dialog-title>Create New Kanban</h1>
+    <h1 mat-dialog-title>{{ dialogTitle }}</h1>
 </div>
 
 <mat-dialog-content [formGroup]="form" class="dialog-content">
     <mat-form-field class="kanban-title">
+        <mat-label>Title</mat-label>
         <input matInput placeholder="Title" formControlName="title" />
+        <mat-error *ngIf="form.get('title').touched && form.get('title').hasError('required')">
+            <strong>Required</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-dialog-actions>
         <button class="mat-raised-button" (click)="close()">Close</button>
         <button class="mat-raised-button mat-primary" (click)="save()">Save</button>
-    </mat-dialog-actions></mat-dialog-content
->
+        <button *ngIf="showDeleteButton" class="mat-raised-button mat-warn" (click)="delete()">Delete</button>
+    </mat-dialog-actions>
+</mat-dialog-content>

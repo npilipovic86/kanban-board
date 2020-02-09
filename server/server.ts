@@ -5,10 +5,17 @@ import { createConnection } from 'typeorm'
 import router from './app/router'
 
 const app = express()
-app.use(express.static('public')) //STATIC files
+
+// STATIC files
+app.use(express.static('public'))
+
+// Body parser use JSON data
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json()) // Body parser use JSON data
-app.use(helmet()) // security config
+app.use(bodyParser.json())
+
+// security config
+app.use(helmet())
+
 // connect the api routes under /api/*
 app.use('/api', router)
 
@@ -25,5 +32,5 @@ createConnection()
 // start express server
 const server = app.listen(process.env.PORT || 7711, () => {
     const port = server.address().port
-    console.log('Server started at: http://localhost:' + port + '\nOpening browser ...')
+    console.log('Server started at: http://localhost:' + port)
 })

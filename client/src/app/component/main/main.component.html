@@ -3,18 +3,17 @@
         <h2>Boards</h2>
     </div>
     <div>
-        <button mat-raised-button (click)="openDialogForNewKanban()">Create New Kanban Board</button>
+        <button mat-raised-button (click)="openDialogForNew()">Create New Kanban Board</button>
     </div>
     <br />
     <mat-divider></mat-divider>
     <mat-list class="list">
         <mat-list-item class="list" *ngFor="let item of boards">
-            <a routerLink="/kanbans/{{ item.id }}">
-                <mat-card>
-                    <mat-card-title>{{ item?.title }}</mat-card-title>
-                    <mat-card-subtitle>{{ fixTimestamp(item?.timestamp) }}</mat-card-subtitle>
-                </mat-card>
-            </a>
+            <mat-card routerLink="/kanbans/{{ item.id }}">
+                <mat-card-title>{{ item?.title }}</mat-card-title>
+                <mat-card-subtitle>{{ fixTimestamp(item?.timestamp) }}</mat-card-subtitle>
+            </mat-card>
+            <mat-icon class="edit" (click)="openDialogForEdit(item)">edit</mat-icon>
         </mat-list-item>
     </mat-list>
 </div>

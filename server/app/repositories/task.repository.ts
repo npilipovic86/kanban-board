@@ -12,8 +12,8 @@ export class TaskRepository {
         return await this.repository.save(item)
     }
 
-    async delete(item: Task) {
-        return await this.repository.remove(item)
+    async delete(id: string) {
+        return await this.repository.delete(id)
     }
 
     async getById(id: string) {

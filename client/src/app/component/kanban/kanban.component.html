@@ -21,10 +21,11 @@
                     *ngFor="let task of todos"
                     cdkDrag
                     [style.background-color]="task.color"
-                    (dblclick)="openTaskDialog($event)"
+                    (dblclick)="openDialogForEditTask(task)"
                     id="{{ task.id }}"
                 >
-                    {{ task.title }}
+
+                    <app-task></app-task>
                 </div>
             </div>
         </div>
@@ -44,10 +45,10 @@
                     *ngFor="let task of inProgress"
                     cdkDrag
                     [style.background-color]="task.color"
-                    (dblclick)="openTaskDialog($event)"
+                    (dblclick)="openDialogForEditTask(task)"
                     id="{{ task.id }}"
                 >
-                    {{ task.title }}
+
                 </div>
             </div>
         </div>
@@ -67,10 +68,12 @@
                     *ngFor="let task of dones"
                     cdkDrag
                     [style.background-color]="task.color"
-                    (dblclick)="openTaskDialog($event)"
+                    (dblclick)="openDialogForEditTask(task)"
                     id="{{ task.id }}"
                 >
-                    {{ task.title }}
+                    <!-- {{ task.title }} -->
+
+
                 </div>
             </div>
         </div>

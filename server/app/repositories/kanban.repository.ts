@@ -13,8 +13,8 @@ export class KanbanRepository {
         return await this.repository.save(item)
     }
 
-    async delete(item: Kanban) {
-        return await this.repository.remove(item)
+    async delete(id: string) {
+        return await this.repository.delete(id)
     }
 
     async getById(id: string) {

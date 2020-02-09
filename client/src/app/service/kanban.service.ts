@@ -17,9 +17,11 @@ export class KanbanService {
     }
     getById(id: String): Observable<Kanban> {
         return this._http.get<Kanban>(this.path + '/' + id)
+        // .map((result: Response) => result.json())
+        // .catch(this.getError)
     }
-    delete(pbe: Kanban): Observable<void> {
-        return this._http.delete<void>(this.path + '/' + pbe.id)
+    delete(id: string): Observable<void> {
+        return this._http.delete<void>(this.path + '/' + id)
     }
     create(title: string): Observable<Kanban> {
         return this._http.post<Kanban>(this.path, { title })
@@ -28,8 +30,6 @@ export class KanbanService {
         return this._http.put<Kanban>(this.path + '/' + pbe.id, pbe)
     }
     saveNewTaskInKanban(kanbanId: string, task: Task): Observable<Task> {
-        // let headers = new HttpHeaders({ 'Content-Type': 'application/json' })
-        // let options = { headers: headers }
         return this._http.post<Task>(this.path + '/' + kanbanId + '/tasks', task)
     }
 }

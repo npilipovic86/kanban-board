@@ -2,14 +2,26 @@
 
 <mat-dialog-content [formGroup]="form" class="dialog-content">
     <mat-form-field>
+        <mat-label>Title</mat-label>
         <input matInput placeholder="Title" formControlName="title" class="task-title" />
+        <mat-error *ngIf="form.get('title').touched && form.get('title').hasError('required')">
+            <strong>Required</strong>
+        </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput placeholder="Color" type="color" formControlName="color" />
+        <mat-label>Color</mat-label>
+        <input matInput placeholder="Color" type="color" formControlName="color" [value]="form.value.color" />
+        <mat-error *ngIf="form.get('color').touched && form.get('color').hasError('required')">
+            <strong>Required</strong>
+        </mat-error>
     </mat-form-field>
     <mat-form-field>
+        <mat-label>Description</mat-label>
         <textarea matInput placeholder="Description" formControlName="description" class="description-area"> </textarea>
+        <mat-error *ngIf="form.get('description').touched && form.get('description').hasError('required')">
+            <strong>Required</strong>
+        </mat-error>
     </mat-form-field>
 </mat-dialog-content>
 

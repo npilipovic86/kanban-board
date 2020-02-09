@@ -30,22 +30,37 @@ export class KanbanComponent implements OnInit {
     }
 
     openDialogForNewTask(): void {
-        const dialogConfig = new MatDialogConfig<Task>()
+        this.openDialog('Create New Task', new Task())
+    }
+
+    openDialogForEditTask(task: Task): void {
+        this.openDialog('Update Task', task)
+    }
+
+    openDialog(title: string, task: Task): void {
+        const dialogConfig = new MatDialogConfig<any>()
         dialogConfig.autoFocus = true
         dialogConfig.data = {
-            title: 'Create New Task',
-            kanbanId: this.kanban.id
+            title: title,
+            kanbanId: this.kanban.id,
+            task: task
         }
         this.dialog
             .open(TaskDialogComponent, dialogConfig)
             .afterClosed()
             .subscribe((result) => {
-                console.log('TCL: KanbanComponent -> result', result)
-                this.kanban.tasks.push(result)
-                this.splitTasksByStatus(this.kanban.tasks)
+                if (result) {
+                    let res = this.kanban.tasks.find((e) => e.id === result.id)
+                    if (!res) {
+                        this.kanban.tasks.push(result)
+                    } else {
+                        let index = this.kanban.tasks.findIndex((e) => e.id === result.id)
+                        this.kanban.tasks[index] = result
+                    }
+                    this.splitTasksByStatus(this.kanban.tasks)
+                }
             })
     }
-
     drop(event: CdkDragDrop<string[]>) {
         if (event.previousContainer === event.container) {
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex)
