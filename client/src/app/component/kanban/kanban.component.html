@@ -1,4 +1,4 @@
-<div class="page-container">
+<div class="container">
     <div class="page-title">
         <h1>{{ kanban?.title }}</h1>
     </div>
@@ -24,14 +24,14 @@
                     (dblclick)="openDialogForEditTask(task)"
                     id="{{ task.id }}"
                 >
-
-                    <app-task></app-task>
+                    <app-task [task]="task" (delete)="deleteTask($event)" (edit)="openDialogForEditTask($event)"></app-task>
                 </div>
             </div>
         </div>
 
         <div class="list-container">
-            <h2>In Progress</h2>
+            <h2>In Progress {{ inProgress.length }} / 3</h2>
+
             <div
                 cdkDropList
                 id="inpro"
@@ -48,7 +48,7 @@
                     (dblclick)="openDialogForEditTask(task)"
                     id="{{ task.id }}"
                 >
-
+                    <app-task [task]="task" (delete)="deleteTask($event)" (edit)="openDialogForEditTask($event)"></app-task>
                 </div>
             </div>
         </div>
@@ -71,9 +71,7 @@
                     (dblclick)="openDialogForEditTask(task)"
                     id="{{ task.id }}"
                 >
-                    <!-- {{ task.title }} -->
-
-
+                    <app-task [task]="task" (delete)="deleteTask($event)" (edit)="openDialogForEditTask($event)"></app-task>
                 </div>
             </div>
         </div>

@@ -36,6 +36,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/component/confirmation-dialog/confirmation-dialog.component.html":
+/*!************************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/component/confirmation-dialog/confirmation-dialog.component.html ***!
+  \************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div mat-dialog-content>  {{ data }}</div>\n<div class='wrap' mat-dialog-actions >\n  <button mat-raised-button (click)=\"onNoClick()\" cdkFocusInitial>No</button>\n  <button mat-raised-button [mat-dialog-close]=\"true\" color='primary'>Yes</button>\n</div>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/component/kanban-dialog/kanban-dialog.component.html":
 /*!************************************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/component/kanban-dialog/kanban-dialog.component.html ***!
@@ -45,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"dialog-title\">\n    <h1 mat-dialog-title>{{ dialogTitle }}</h1>\n</div>\n\n<mat-dialog-content [formGroup]=\"form\" class=\"dialog-content\">\n    <mat-form-field class=\"kanban-title\">\n        <mat-label>Title</mat-label>\n        <input matInput placeholder=\"Title\" formControlName=\"title\" />\n        <mat-error *ngIf=\"form.get('title').touched && form.get('title').hasError('required')\">\n            <strong>Required</strong>\n        </mat-error>\n    </mat-form-field>\n\n    <mat-dialog-actions>\n        <button class=\"mat-raised-button\" (click)=\"close()\">Close</button>\n        <button class=\"mat-raised-button mat-primary\" (click)=\"save()\">Save</button>\n        <button *ngIf=\"showDeleteButton\" class=\"mat-raised-button mat-warn\" (click)=\"delete()\">Delete</button>\n    </mat-dialog-actions>\n</mat-dialog-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"dialog-title\">\n    <h1 mat-dialog-title>{{ dialogTitle }}</h1>\n</div>\n\n<mat-dialog-content [formGroup]=\"form\" class=\"dialog-content\">\n    <mat-form-field class=\"kanban-title\">\n        <mat-label>Title</mat-label>\n        <input matInput placeholder=\"Title\" formControlName=\"title\" />\n        <mat-error *ngIf=\"form.get('title').touched && form.get('title').hasError('required')\">\n            <strong>Required</strong>\n        </mat-error>\n    </mat-form-field>\n\n    <mat-dialog-actions>\n        <button class=\"mat-raised-button\" (click)=\"close()\">Close</button>\n        <button class=\"mat-raised-button mat-primary\" (click)=\"save()\">Save</button>\n        <!-- <button *ngIf=\"showDeleteButton\" class=\"mat-raised-button mat-warn\" (click)=\"delete()\">Delete</button> -->\n    </mat-dialog-actions>\n</mat-dialog-content>\n");
 
 /***/ }),
 
@@ -58,7 +71,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"page-container\">\n    <div class=\"page-title\">\n        <h1>{{ kanban?.title }}</h1>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"openDialogForNewTask()\">Create New Task</button>\n    </div>\n    <div class=\"kanban-board\">\n        <div class=\"list-container\">\n            <h2>To do</h2>\n            <div\n                cdkDropList\n                id=\"todo\"\n                [cdkDropListData]=\"todos\"\n                [cdkDropListConnectedTo]=\"['inpro', 'done']\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div\n                    class=\"sticky-note\"\n                    *ngFor=\"let task of todos\"\n                    cdkDrag\n                    [style.background-color]=\"task.color\"\n                    (dblclick)=\"openDialogForEditTask(task)\"\n                    id=\"{{ task.id }}\"\n                >\n\n                    <app-task></app-task>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"list-container\">\n            <h2>In Progress</h2>\n            <div\n                cdkDropList\n                id=\"inpro\"\n                [cdkDropListData]=\"inProgress\"\n                [cdkDropListConnectedTo]=\"['todo', 'done']\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div\n                    class=\"sticky-note\"\n                    *ngFor=\"let task of inProgress\"\n                    cdkDrag\n                    [style.background-color]=\"task.color\"\n                    (dblclick)=\"openDialogForEditTask(task)\"\n                    id=\"{{ task.id }}\"\n                >\n\n                </div>\n            </div>\n        </div>\n\n        <div class=\"list-container\">\n            <h2>Done</h2>\n            <div\n                cdkDropList\n                id=\"done\"\n                [cdkDropListData]=\"dones\"\n                [cdkDropListConnectedTo]=\"['todo', 'inpro']\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div\n                    class=\"sticky-note\"\n                    *ngFor=\"let task of dones\"\n                    cdkDrag\n                    [style.background-color]=\"task.color\"\n                    (dblclick)=\"openDialogForEditTask(task)\"\n                    id=\"{{ task.id }}\"\n                >\n                    <!-- {{ task.title }} -->\n\n\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"page-title\">\n        <h1>{{ kanban?.title }}</h1>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"openDialogForNewTask()\">Create New Task</button>\n    </div>\n    <div class=\"kanban-board\">\n        <div class=\"list-container\">\n            <h2>To do</h2>\n            <div\n                cdkDropList\n                id=\"todo\"\n                [cdkDropListData]=\"todos\"\n                [cdkDropListConnectedTo]=\"['inpro', 'done']\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div\n                    class=\"sticky-note\"\n                    *ngFor=\"let task of todos\"\n                    cdkDrag\n                    [style.background-color]=\"task.color\"\n                    (dblclick)=\"openDialogForEditTask(task)\"\n                    id=\"{{ task.id }}\"\n                >\n                    <app-task [task]=\"task\" (delete)=\"deleteTask($event)\" (edit)=\"openDialogForEditTask($event)\"></app-task>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"list-container\">\n            <h2>In Progress {{ inProgress.length }} / 3</h2>\n\n            <div\n                cdkDropList\n                id=\"inpro\"\n                [cdkDropListData]=\"inProgress\"\n                [cdkDropListConnectedTo]=\"['todo', 'done']\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div\n                    class=\"sticky-note\"\n                    *ngFor=\"let task of inProgress\"\n                    cdkDrag\n                    [style.background-color]=\"task.color\"\n                    (dblclick)=\"openDialogForEditTask(task)\"\n                    id=\"{{ task.id }}\"\n                >\n                    <app-task [task]=\"task\" (delete)=\"deleteTask($event)\" (edit)=\"openDialogForEditTask($event)\"></app-task>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"list-container\">\n            <h2>Done</h2>\n            <div\n                cdkDropList\n                id=\"done\"\n                [cdkDropListData]=\"dones\"\n                [cdkDropListConnectedTo]=\"['todo', 'inpro']\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div\n                    class=\"sticky-note\"\n                    *ngFor=\"let task of dones\"\n                    cdkDrag\n                    [style.background-color]=\"task.color\"\n                    (dblclick)=\"openDialogForEditTask(task)\"\n                    id=\"{{ task.id }}\"\n                >\n                    <app-task [task]=\"task\" (delete)=\"deleteTask($event)\" (edit)=\"openDialogForEditTask($event)\"></app-task>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n");
 
 /***/ }),
 
@@ -71,7 +84,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div>\n        <h2>Boards</h2>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"openDialogForNew()\">Create New Kanban Board</button>\n    </div>\n    <br />\n    <mat-divider></mat-divider>\n    <mat-list class=\"list\">\n        <mat-list-item class=\"list\" *ngFor=\"let item of boards\">\n            <mat-card routerLink=\"/kanbans/{{ item.id }}\">\n                <mat-card-title>{{ item?.title }}</mat-card-title>\n                <mat-card-subtitle>{{ fixTimestamp(item?.timestamp) }}</mat-card-subtitle>\n            </mat-card>\n            <mat-icon class=\"edit\" (click)=\"openDialogForEdit(item)\">edit</mat-icon>\n        </mat-list-item>\n    </mat-list>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div>\n        <h2>Boards</h2>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"openDialogForNew()\">Create New Kanban Board</button>\n    </div>\n    <br />\n    <mat-divider></mat-divider>\n    <mat-list class=\"list\">\n        <mat-list-item class=\"list\" *ngFor=\"let item of boards\">\n            <mat-card routerLink=\"/kanbans/{{ item.id }}\">\n                <mat-card-header>\n                    <mat-card-title>{{ item.title }}</mat-card-title>\n                    <mat-card-actions>\n                        <mat-icon matTooltip=\"Delete\" [matTooltipPosition]=\"['above']\" (click)=\"delete(item.id)\">delete</mat-icon>\n                        <mat-icon matTooltip=\"Edit\" [matTooltipPosition]=\"['above']\" (click)=\"openDialogForEdit(item)\">edit</mat-icon>\n                    </mat-card-actions>\n                </mat-card-header>\n                <mat-card-footer>\n                    {{ item?.timestamp | date: 'E, dd MMM yy, HH:mm':'+0100' }}\n                </mat-card-footer>\n            </mat-card>\n        </mat-list-item>\n    </mat-list>\n</div>\n");
 
 /***/ }),
 
@@ -97,7 +110,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<mat-card class=\"card\">\n    <mat-card-header class=\"card__header\">\n        <mat-card-title>{{ title }}</mat-card-title>\n        <mat-card-subtitle>{{ timestamp }}</mat-card-subtitle>\n        <mat-card-actions class=\"card__actions\">\n            <button mat-button>LIKE</button>\n            <button mat-button>SHARE</button>\n        </mat-card-actions>\n    </mat-card-header>\n    <mat-card-content class=\"card__content\">\n        <p>\n            {{ description }}\n        </p>\n    </mat-card-content>\n</mat-card>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<mat-card>\n    <mat-card-header [style.background-color]=\"task.color\">\n        <mat-card-title>{{ task.title }}</mat-card-title>\n        <mat-card-actions>\n            <mat-icon matTooltip=\"Delete\" [matTooltipPosition]=\"['above']\" (click)=\"remove()\">delete</mat-icon>\n            <mat-icon matTooltip=\"Edit\" [matTooltipPosition]=\"['above']\" (click)=\"openDialogForEdit()\">edit</mat-icon>\n        </mat-card-actions>\n    </mat-card-header>\n    <mat-card-content>\n        <p>\n            {{ task.description }}\n        </p>\n    </mat-card-content>\n    <mat-card-footer>\n        <span>{{ task?.timestamp | date: 'E, dd MMM yy, HH:mm':'+0100' }}</span>\n    </mat-card-footer>\n</mat-card>\n");
 
 /***/ }),
 
@@ -432,17 +445,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/material/card */ "./node_modules/@angular/material/esm2015/card.js");
 /* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/icon */ "./node_modules/@angular/material/esm2015/icon.js");
 /* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/list */ "./node_modules/@angular/material/esm2015/list.js");
-/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
-/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _component_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./component/kanban-dialog/kanban-dialog.component */ "./src/app/component/kanban-dialog/kanban-dialog.component.ts");
-/* harmony import */ var _component_kanban_kanban_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./component/kanban/kanban.component */ "./src/app/component/kanban/kanban.component.ts");
-/* harmony import */ var _component_main_main_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./component/main/main.component */ "./src/app/component/main/main.component.ts");
-/* harmony import */ var _component_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./component/task-dialog/task-dialog.component */ "./src/app/component/task-dialog/task-dialog.component.ts");
-/* harmony import */ var _service_kanban_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./service/kanban.service */ "./src/app/service/kanban.service.ts");
-/* harmony import */ var _service_task_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./service/task.service */ "./src/app/service/task.service.ts");
+/* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/material/tooltip */ "./node_modules/@angular/material/esm2015/tooltip.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm2015/platform-browser.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _component_confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./component/confirmation-dialog/confirmation-dialog.component */ "./src/app/component/confirmation-dialog/confirmation-dialog.component.ts");
+/* harmony import */ var _component_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./component/kanban-dialog/kanban-dialog.component */ "./src/app/component/kanban-dialog/kanban-dialog.component.ts");
+/* harmony import */ var _component_kanban_kanban_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./component/kanban/kanban.component */ "./src/app/component/kanban/kanban.component.ts");
+/* harmony import */ var _component_main_main_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./component/main/main.component */ "./src/app/component/main/main.component.ts");
+/* harmony import */ var _component_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./component/task-dialog/task-dialog.component */ "./src/app/component/task-dialog/task-dialog.component.ts");
 /* harmony import */ var _component_task_task_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./component/task/task.component */ "./src/app/component/task/task.component.ts");
+/* harmony import */ var _service_kanban_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./service/kanban.service */ "./src/app/service/kanban.service.ts");
+/* harmony import */ var _service_task_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./service/task.service */ "./src/app/service/task.service.ts");
+
+
 
 
 
@@ -468,11 +485,19 @@ let AppModule = class AppModule {
 };
 AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["NgModule"])({
-        declarations: [_app_component__WEBPACK_IMPORTED_MODULE_13__["AppComponent"], _component_kanban_kanban_component__WEBPACK_IMPORTED_MODULE_15__["KanbanComponent"], _component_main_main_component__WEBPACK_IMPORTED_MODULE_16__["MainComponent"], _component_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_14__["KanbanDialogComponent"], _component_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_17__["TaskDialogComponent"], _component_task_task_component__WEBPACK_IMPORTED_MODULE_20__["TaskComponent"]],
+        declarations: [
+            _app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"],
+            _component_kanban_kanban_component__WEBPACK_IMPORTED_MODULE_17__["KanbanComponent"],
+            _component_main_main_component__WEBPACK_IMPORTED_MODULE_18__["MainComponent"],
+            _component_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_16__["KanbanDialogComponent"],
+            _component_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_19__["TaskDialogComponent"],
+            _component_task_task_component__WEBPACK_IMPORTED_MODULE_20__["TaskComponent"],
+            _component_confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_15__["ConfirmationDialogComponent"]
+        ],
         imports: [
-            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_10__["BrowserModule"],
-            _app_routing_module__WEBPACK_IMPORTED_MODULE_12__["AppRoutingModule"],
-            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_11__["BrowserAnimationsModule"],
+            _angular_platform_browser__WEBPACK_IMPORTED_MODULE_11__["BrowserModule"],
+            _app_routing_module__WEBPACK_IMPORTED_MODULE_13__["AppRoutingModule"],
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_12__["BrowserAnimationsModule"],
             _angular_material_list__WEBPACK_IMPORTED_MODULE_9__["MatListModule"],
             _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_1__["DragDropModule"],
             _angular_material__WEBPACK_IMPORTED_MODULE_5__["MatSelectModule"],
@@ -483,13 +508,71 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_forms__WEBPACK_IMPORTED_MODULE_4__["FormsModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_4__["ReactiveFormsModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
-            _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__["MatIconModule"]
+            _angular_material_icon__WEBPACK_IMPORTED_MODULE_8__["MatIconModule"],
+            _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_10__["MatTooltipModule"]
         ],
-        providers: [_service_kanban_service__WEBPACK_IMPORTED_MODULE_18__["KanbanService"], _service_task_service__WEBPACK_IMPORTED_MODULE_19__["TaskService"]],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_13__["AppComponent"]],
-        entryComponents: [_component_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_14__["KanbanDialogComponent"], _component_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_17__["TaskDialogComponent"]]
+        providers: [_service_kanban_service__WEBPACK_IMPORTED_MODULE_21__["KanbanService"], _service_task_service__WEBPACK_IMPORTED_MODULE_22__["TaskService"]],
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_14__["AppComponent"]],
+        entryComponents: [_component_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_16__["KanbanDialogComponent"], _component_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_19__["TaskDialogComponent"], _component_confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_15__["ConfirmationDialogComponent"]]
     })
 ], AppModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/component/confirmation-dialog/confirmation-dialog.component.scss":
+/*!**********************************************************************************!*\
+  !*** ./src/app/component/confirmation-dialog/confirmation-dialog.component.scss ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".wrap {\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL21hanN0b3Ivd29ya3NwYWNlL2thbmJhbi1ib2FyZC9jbGllbnQvc3JjL2FwcC9jb21wb25lbnQvY29uZmlybWF0aW9uLWRpYWxvZy9jb25maXJtYXRpb24tZGlhbG9nLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21wb25lbnQvY29uZmlybWF0aW9uLWRpYWxvZy9jb25maXJtYXRpb24tZGlhbG9nLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0kseUJBQUE7VUFBQSw4QkFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50L2NvbmZpcm1hdGlvbi1kaWFsb2cvY29uZmlybWF0aW9uLWRpYWxvZy5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi53cmFwIHtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG59IiwiLndyYXAge1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG59Il19 */");
+
+/***/ }),
+
+/***/ "./src/app/component/confirmation-dialog/confirmation-dialog.component.ts":
+/*!********************************************************************************!*\
+  !*** ./src/app/component/confirmation-dialog/confirmation-dialog.component.ts ***!
+  \********************************************************************************/
+/*! exports provided: ConfirmationDialogComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConfirmationDialogComponent", function() { return ConfirmationDialogComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/esm2015/dialog.js");
+
+
+
+let ConfirmationDialogComponent = class ConfirmationDialogComponent {
+    constructor(_dialogRef, data) {
+        this._dialogRef = _dialogRef;
+        this.data = data;
+        this._dialogRef.disableClose = true;
+    }
+    onNoClick() {
+        this._dialogRef.close();
+    }
+    ngOnInit() { }
+};
+ConfirmationDialogComponent.ctorParameters = () => [
+    { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MatDialogRef"] },
+    { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"], args: [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"],] }] }
+];
+ConfirmationDialogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-confirmation-dialog',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./confirmation-dialog.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/component/confirmation-dialog/confirmation-dialog.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./confirmation-dialog.component.scss */ "./src/app/component/confirmation-dialog/confirmation-dialog.component.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__param"](1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"])(_angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MAT_DIALOG_DATA"]))
+], ConfirmationDialogComponent);
 
 
 
@@ -548,9 +631,6 @@ let KanbanDialogComponent = class KanbanDialogComponent {
     close(kanban) {
         this.dialogRef.close(kanban);
     }
-    delete() {
-        this._service.delete(this.kanban.id).subscribe(() => this.close());
-    }
     save() {
         if (this.form.valid) {
             if (!this.kanban.id) {
@@ -594,7 +674,7 @@ KanbanDialogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".page-container {\n  font-family: \"Open Sans\", sans-serif;\n}\n\n.kanban-board {\n  display: -webkit-box;\n  display: flex;\n}\n\n.list-container {\n  width: 400px;\n  max-width: 100%;\n  margin: 0 25px 25px 0;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.board-list {\n  padding: 2px 2px 2px 2px;\n  border: solid 1px #ccc;\n  min-height: 400px;\n  background: white;\n  border-radius: 4px;\n  overflow: hidden;\n  display: block;\n}\n\n.sticky-note {\n  padding: 20px 10px;\n  border: solid 1px #ccc;\n  border-radius: 4px;\n  margin-top: 2px;\n  color: rgba(0, 0, 0, 0.87);\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  box-sizing: border-box;\n  cursor: move;\n  background: white;\n  font-size: 14px;\n}\n\n.cdk-drag-preview {\n  box-sizing: border-box;\n  border-radius: 4px;\n  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);\n}\n\n.cdk-drag-placeholder {\n  opacity: 0;\n}\n\n.cdk-drag-animating {\n  -webkit-transition: -webkit-transform 250ms cubic-bezier(0, 0, 0.2, 1);\n  transition: -webkit-transform 250ms cubic-bezier(0, 0, 0.2, 1);\n  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);\n  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1), -webkit-transform 250ms cubic-bezier(0, 0, 0.2, 1);\n}\n\n.sticky-note.cdk-drop-list-dragging .sticky-note:not(.cdk-drag-placeholder) {\n  -webkit-transition: -webkit-transform 250ms cubic-bezier(0, 0, 0.2, 1);\n  transition: -webkit-transform 250ms cubic-bezier(0, 0, 0.2, 1);\n  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);\n  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1), -webkit-transform 250ms cubic-bezier(0, 0, 0.2, 1);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL21hanN0b3Ivd29ya3NwYWNlL2thbmJhbi1ib2FyZC9jbGllbnQvc3JjL2FwcC9jb21wb25lbnQva2FuYmFuL2thbmJhbi5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50L2thbmJhbi9rYW5iYW4uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxvQ0FBQTtBQ0NKOztBREVBO0VBQ0ksb0JBQUE7RUFBQSxhQUFBO0FDQ0o7O0FERUE7RUFDSSxZQUFBO0VBQ0EsZUFBQTtFQUNBLHFCQUFBO0VBQ0EscUJBQUE7RUFDQSxtQkFBQTtBQ0NKOztBREVBO0VBQ0ksd0JBQUE7RUFDQSxzQkFBQTtFQUNBLGlCQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsY0FBQTtBQ0NKOztBREVBO0VBQ0ksa0JBQUE7RUFDQSxzQkFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLDBCQUFBO0VBQ0Esb0JBQUE7RUFBQSxhQUFBO0VBQ0EsOEJBQUE7RUFBQSw2QkFBQTtVQUFBLG1CQUFBO0VBQ0EseUJBQUE7VUFBQSxtQkFBQTtFQUNBLHlCQUFBO1VBQUEsOEJBQUE7RUFDQSxzQkFBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtFQUNBLGVBQUE7QUNDSjs7QURFQTtFQUNJLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSxxSEFBQTtBQ0NKOztBREVBO0VBQ0ksVUFBQTtBQ0NKOztBREVBO0VBQ0ksc0VBQUE7RUFBQSw4REFBQTtFQUFBLHNEQUFBO0VBQUEsMEdBQUE7QUNDSjs7QURFQTtFQUNJLHNFQUFBO0VBQUEsOERBQUE7RUFBQSxzREFBQTtFQUFBLDBHQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnQva2FuYmFuL2thbmJhbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wYWdlLWNvbnRhaW5lciB7XG4gICAgZm9udC1mYW1pbHk6ICdPcGVuIFNhbnMnLCBzYW5zLXNlcmlmO1xufVxuXG4ua2FuYmFuLWJvYXJkIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xufVxuXG4ubGlzdC1jb250YWluZXIge1xuICAgIHdpZHRoOiA0MDBweDtcbiAgICBtYXgtd2lkdGg6IDEwMCU7XG4gICAgbWFyZ2luOiAwIDI1cHggMjVweCAwO1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xufVxuXG4uYm9hcmQtbGlzdCB7XG4gICAgcGFkZGluZzogMnB4IDJweCAycHggMnB4O1xuICAgIGJvcmRlcjogc29saWQgMXB4ICNjY2M7XG4gICAgbWluLWhlaWdodDogNDAwcHg7XG4gICAgYmFja2dyb3VuZDogd2hpdGU7XG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgZGlzcGxheTogYmxvY2s7XG59XG5cbi5zdGlja3ktbm90ZSB7XG4gICAgcGFkZGluZzogMjBweCAxMHB4O1xuICAgIGJvcmRlcjogc29saWQgMXB4ICNjY2M7XG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgIG1hcmdpbi10b3A6IDJweDtcbiAgICBjb2xvcjogcmdiYSgwLCAwLCAwLCAwLjg3KTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gICAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgICBjdXJzb3I6IG1vdmU7XG4gICAgYmFja2dyb3VuZDogd2hpdGU7XG4gICAgZm9udC1zaXplOiAxNHB4O1xufVxuXG4uY2RrLWRyYWctcHJldmlldyB7XG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgYm94LXNoYWRvdzogMCA1cHggNXB4IC0zcHggcmdiYSgwLCAwLCAwLCAwLjIpLCAwIDhweCAxMHB4IDFweCByZ2JhKDAsIDAsIDAsIDAuMTQpLCAwIDNweCAxNHB4IDJweCByZ2JhKDAsIDAsIDAsIDAuMTIpO1xufVxuXG4uY2RrLWRyYWctcGxhY2Vob2xkZXIge1xuICAgIG9wYWNpdHk6IDA7XG59XG5cbi5jZGstZHJhZy1hbmltYXRpbmcge1xuICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAyNTBtcyBjdWJpYy1iZXppZXIoMCwgMCwgMC4yLCAxKTtcbn1cblxuLnN0aWNreS1ub3RlLmNkay1kcm9wLWxpc3QtZHJhZ2dpbmcgLnN0aWNreS1ub3RlOm5vdCguY2RrLWRyYWctcGxhY2Vob2xkZXIpIHtcbiAgICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMjUwbXMgY3ViaWMtYmV6aWVyKDAsIDAsIDAuMiwgMSk7XG59XG4iLCIucGFnZS1jb250YWluZXIge1xuICBmb250LWZhbWlseTogXCJPcGVuIFNhbnNcIiwgc2Fucy1zZXJpZjtcbn1cblxuLmthbmJhbi1ib2FyZCB7XG4gIGRpc3BsYXk6IGZsZXg7XG59XG5cbi5saXN0LWNvbnRhaW5lciB7XG4gIHdpZHRoOiA0MDBweDtcbiAgbWF4LXdpZHRoOiAxMDAlO1xuICBtYXJnaW46IDAgMjVweCAyNXB4IDA7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgdmVydGljYWwtYWxpZ246IHRvcDtcbn1cblxuLmJvYXJkLWxpc3Qge1xuICBwYWRkaW5nOiAycHggMnB4IDJweCAycHg7XG4gIGJvcmRlcjogc29saWQgMXB4ICNjY2M7XG4gIG1pbi1oZWlnaHQ6IDQwMHB4O1xuICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuLnN0aWNreS1ub3RlIHtcbiAgcGFkZGluZzogMjBweCAxMHB4O1xuICBib3JkZXI6IHNvbGlkIDFweCAjY2NjO1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG4gIG1hcmdpbi10b3A6IDJweDtcbiAgY29sb3I6IHJnYmEoMCwgMCwgMCwgMC44Nyk7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtZGlyZWN0aW9uOiByb3c7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgY3Vyc29yOiBtb3ZlO1xuICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgZm9udC1zaXplOiAxNHB4O1xufVxuXG4uY2RrLWRyYWctcHJldmlldyB7XG4gIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgYm94LXNoYWRvdzogMCA1cHggNXB4IC0zcHggcmdiYSgwLCAwLCAwLCAwLjIpLCAwIDhweCAxMHB4IDFweCByZ2JhKDAsIDAsIDAsIDAuMTQpLCAwIDNweCAxNHB4IDJweCByZ2JhKDAsIDAsIDAsIDAuMTIpO1xufVxuXG4uY2RrLWRyYWctcGxhY2Vob2xkZXIge1xuICBvcGFjaXR5OiAwO1xufVxuXG4uY2RrLWRyYWctYW5pbWF0aW5nIHtcbiAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDI1MG1zIGN1YmljLWJlemllcigwLCAwLCAwLjIsIDEpO1xufVxuXG4uc3RpY2t5LW5vdGUuY2RrLWRyb3AtbGlzdC1kcmFnZ2luZyAuc3RpY2t5LW5vdGU6bm90KC5jZGstZHJhZy1wbGFjZWhvbGRlcikge1xuICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMjUwbXMgY3ViaWMtYmV6aWVyKDAsIDAsIDAuMiwgMSk7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".container {\n  font-family: \"Open Sans\", sans-serif;\n  text-align: center;\n}\n\n.kanban-board {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n\n.list-container {\n  width: 400px;\n  max-width: 100%;\n  margin: 0 1em;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.board-list {\n  padding: 2px 2px 2px 2px;\n  border: solid 1px #ccc;\n  min-height: 400px;\n  border-radius: 4px;\n  overflow: hidden;\n  display: block;\n}\n\nsticky-note {\n  padding: 20px 10px;\n  border: solid 1px #ccc;\n  border-radius: 4px;\n  margin-top: 2px;\n  color: rgba(0, 0, 0, 0.87);\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  box-sizing: border-box;\n  cursor: move;\n  background: white;\n  font-size: 14px;\n}\n\n.sticky-note {\n  border-radius: 4px;\n  margin-top: 2px;\n  font-size: 14px;\n}\n\n.cdk-drag-preview {\n  box-sizing: border-box;\n  border-radius: 4px;\n  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2), 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);\n}\n\n.cdk-drag-placeholder {\n  opacity: 0;\n}\n\n.cdk-drag-animating {\n  -webkit-transition: -webkit-transform 250ms cubic-bezier(0, 0, 0.2, 1);\n  transition: -webkit-transform 250ms cubic-bezier(0, 0, 0.2, 1);\n  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);\n  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1), -webkit-transform 250ms cubic-bezier(0, 0, 0.2, 1);\n}\n\n.sticky-note.cdk-drop-list-dragging .sticky-note:not(.cdk-drag-placeholder) {\n  -webkit-transition: -webkit-transform 250ms cubic-bezier(0, 0, 0.2, 1);\n  transition: -webkit-transform 250ms cubic-bezier(0, 0, 0.2, 1);\n  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);\n  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1), -webkit-transform 250ms cubic-bezier(0, 0, 0.2, 1);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL21hanN0b3Ivd29ya3NwYWNlL2thbmJhbi1ib2FyZC9jbGllbnQvc3JjL2FwcC9jb21wb25lbnQva2FuYmFuL2thbmJhbi5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50L2thbmJhbi9rYW5iYW4uY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxvQ0FBQTtFQUNBLGtCQUFBO0FDQ0o7O0FERUE7RUFDSSxvQkFBQTtFQUFBLGFBQUE7RUFDQSx3QkFBQTtVQUFBLHVCQUFBO0FDQ0o7O0FERUE7RUFDSSxZQUFBO0VBQ0EsZUFBQTtFQUNBLGFBQUE7RUFDQSxxQkFBQTtFQUNBLG1CQUFBO0FDQ0o7O0FERUE7RUFDSSx3QkFBQTtFQUNBLHNCQUFBO0VBQ0EsaUJBQUE7RUFFQSxrQkFBQTtFQUNBLGdCQUFBO0VBQ0EsY0FBQTtBQ0FKOztBRE9BO0VBQ0ksa0JBQUE7RUFDQSxzQkFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLDBCQUFBO0VBQ0Esb0JBQUE7RUFBQSxhQUFBO0VBQ0EsOEJBQUE7RUFBQSw2QkFBQTtVQUFBLG1CQUFBO0VBQ0EseUJBQUE7VUFBQSxtQkFBQTtFQUNBLHlCQUFBO1VBQUEsOEJBQUE7RUFDQSxzQkFBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtFQUNBLGVBQUE7QUNKSjs7QURPQTtFQUNJLGtCQUFBO0VBQ0EsZUFBQTtFQUVBLGVBQUE7QUNMSjs7QURPQTtFQUNJLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSxxSEFBQTtBQ0pKOztBRE9BO0VBQ0ksVUFBQTtBQ0pKOztBRE9BO0VBQ0ksc0VBQUE7RUFBQSw4REFBQTtFQUFBLHNEQUFBO0VBQUEsMEdBQUE7QUNKSjs7QURPQTtFQUNJLHNFQUFBO0VBQUEsOERBQUE7RUFBQSxzREFBQTtFQUFBLDBHQUFBO0FDSkoiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnQva2FuYmFuL2thbmJhbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250YWluZXIge1xuICAgIGZvbnQtZmFtaWx5OiAnT3BlbiBTYW5zJywgc2Fucy1zZXJpZjtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5rYW5iYW4tYm9hcmQge1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbi5saXN0LWNvbnRhaW5lciB7XG4gICAgd2lkdGg6IDQwMHB4O1xuICAgIG1heC13aWR0aDogMTAwJTtcbiAgICBtYXJnaW46IDAgMWVtO1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xufVxuXG4uYm9hcmQtbGlzdCB7XG4gICAgcGFkZGluZzogMnB4IDJweCAycHggMnB4O1xuICAgIGJvcmRlcjogc29saWQgMXB4ICNjY2M7XG4gICAgbWluLWhlaWdodDogNDAwcHg7XG4gICAgLy8gYmFja2dyb3VuZDogd2hpdGU7XG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgIG92ZXJmbG93OiBoaWRkZW47XG4gICAgZGlzcGxheTogYmxvY2s7XG5cbiAgICAvLyBkaXNwbGF5OiBmbGV4O1xuICAgIC8vIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgLy8ganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xufVxuLy8gb3ZvIGplIGlza2xqdWNlbm9cbnN0aWNreS1ub3RlIHtcbiAgICBwYWRkaW5nOiAyMHB4IDEwcHg7XG4gICAgYm9yZGVyOiBzb2xpZCAxcHggI2NjYztcbiAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgbWFyZ2luLXRvcDogMnB4O1xuICAgIGNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuODcpO1xuICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjtcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICAgIGN1cnNvcjogbW92ZTtcbiAgICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgICBmb250LXNpemU6IDE0cHg7XG59XG5cbi5zdGlja3ktbm90ZSB7XG4gICAgYm9yZGVyLXJhZGl1czogNHB4O1xuICAgIG1hcmdpbi10b3A6IDJweDtcblxuICAgIGZvbnQtc2l6ZTogMTRweDtcbn1cbi5jZGstZHJhZy1wcmV2aWV3IHtcbiAgICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICBib3gtc2hhZG93OiAwIDVweCA1cHggLTNweCByZ2JhKDAsIDAsIDAsIDAuMiksIDAgOHB4IDEwcHggMXB4IHJnYmEoMCwgMCwgMCwgMC4xNCksIDAgM3B4IDE0cHggMnB4IHJnYmEoMCwgMCwgMCwgMC4xMik7XG59XG5cbi5jZGstZHJhZy1wbGFjZWhvbGRlciB7XG4gICAgb3BhY2l0eTogMDtcbn1cblxuLmNkay1kcmFnLWFuaW1hdGluZyB7XG4gICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIDI1MG1zIGN1YmljLWJlemllcigwLCAwLCAwLjIsIDEpO1xufVxuXG4uc3RpY2t5LW5vdGUuY2RrLWRyb3AtbGlzdC1kcmFnZ2luZyAuc3RpY2t5LW5vdGU6bm90KC5jZGstZHJhZy1wbGFjZWhvbGRlcikge1xuICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAyNTBtcyBjdWJpYy1iZXppZXIoMCwgMCwgMC4yLCAxKTtcbn1cbiIsIi5jb250YWluZXIge1xuICBmb250LWZhbWlseTogXCJPcGVuIFNhbnNcIiwgc2Fucy1zZXJpZjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4ua2FuYmFuLWJvYXJkIHtcbiAgZGlzcGxheTogZmxleDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG5cbi5saXN0LWNvbnRhaW5lciB7XG4gIHdpZHRoOiA0MDBweDtcbiAgbWF4LXdpZHRoOiAxMDAlO1xuICBtYXJnaW46IDAgMWVtO1xuICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XG59XG5cbi5ib2FyZC1saXN0IHtcbiAgcGFkZGluZzogMnB4IDJweCAycHggMnB4O1xuICBib3JkZXI6IHNvbGlkIDFweCAjY2NjO1xuICBtaW4taGVpZ2h0OiA0MDBweDtcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBibG9jaztcbn1cblxuc3RpY2t5LW5vdGUge1xuICBwYWRkaW5nOiAyMHB4IDEwcHg7XG4gIGJvcmRlcjogc29saWQgMXB4ICNjY2M7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgbWFyZ2luLXRvcDogMnB4O1xuICBjb2xvcjogcmdiYSgwLCAwLCAwLCAwLjg3KTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IHJvdztcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBjdXJzb3I6IG1vdmU7XG4gIGJhY2tncm91bmQ6IHdoaXRlO1xuICBmb250LXNpemU6IDE0cHg7XG59XG5cbi5zdGlja3ktbm90ZSB7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgbWFyZ2luLXRvcDogMnB4O1xuICBmb250LXNpemU6IDE0cHg7XG59XG5cbi5jZGstZHJhZy1wcmV2aWV3IHtcbiAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xuICBib3gtc2hhZG93OiAwIDVweCA1cHggLTNweCByZ2JhKDAsIDAsIDAsIDAuMiksIDAgOHB4IDEwcHggMXB4IHJnYmEoMCwgMCwgMCwgMC4xNCksIDAgM3B4IDE0cHggMnB4IHJnYmEoMCwgMCwgMCwgMC4xMik7XG59XG5cbi5jZGstZHJhZy1wbGFjZWhvbGRlciB7XG4gIG9wYWNpdHk6IDA7XG59XG5cbi5jZGstZHJhZy1hbmltYXRpbmcge1xuICB0cmFuc2l0aW9uOiB0cmFuc2Zvcm0gMjUwbXMgY3ViaWMtYmV6aWVyKDAsIDAsIDAuMiwgMSk7XG59XG5cbi5zdGlja3ktbm90ZS5jZGstZHJvcC1saXN0LWRyYWdnaW5nIC5zdGlja3ktbm90ZTpub3QoLmNkay1kcmFnLXBsYWNlaG9sZGVyKSB7XG4gIHRyYW5zaXRpb246IHRyYW5zZm9ybSAyNTBtcyBjdWJpYy1iZXppZXIoMCwgMCwgMC4yLCAxKTtcbn0iXX0= */");
 
 /***/ }),
 
@@ -616,7 +696,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var src_app_model_task__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/model/task */ "./src/app/model/task.ts");
 /* harmony import */ var src_app_service_kanban_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/service/kanban.service */ "./src/app/service/kanban.service.ts");
 /* harmony import */ var src_app_service_task_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/service/task.service */ "./src/app/service/task.service.ts");
-/* harmony import */ var _task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../task-dialog/task-dialog.component */ "./src/app/component/task-dialog/task-dialog.component.ts");
+/* harmony import */ var _confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../confirmation-dialog/confirmation-dialog.component */ "./src/app/component/confirmation-dialog/confirmation-dialog.component.ts");
+/* harmony import */ var _task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../task-dialog/task-dialog.component */ "./src/app/component/task-dialog/task-dialog.component.ts");
+
 
 
 
@@ -640,6 +722,26 @@ let KanbanComponent = class KanbanComponent {
     ngOnInit() {
         this.getKanban();
     }
+    deleteTask(id) {
+        console.log(id);
+        this.confirm()
+            .afterClosed()
+            .subscribe((result) => {
+            if (result) {
+                this._taskService.delete(id).subscribe(() => {
+                    let index = this.kanban.tasks.findIndex((e) => e.id === id);
+                    this.kanban.tasks.splice(index, 1);
+                    this.splitTasksByStatus(this.kanban.tasks);
+                });
+            }
+        });
+    }
+    confirm() {
+        return this.dialog.open(_confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_8__["ConfirmationDialogComponent"], {
+            width: '350px',
+            data: 'Do you want to delete this item?'
+        });
+    }
     openDialogForNewTask() {
         this.openDialog('Create New Task', new src_app_model_task__WEBPACK_IMPORTED_MODULE_5__["Task"]());
     }
@@ -655,7 +757,7 @@ let KanbanComponent = class KanbanComponent {
             task: task
         };
         this.dialog
-            .open(_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_8__["TaskDialogComponent"], dialogConfig)
+            .open(_task_dialog_task_dialog_component__WEBPACK_IMPORTED_MODULE_9__["TaskDialogComponent"], dialogConfig)
             .afterClosed()
             .subscribe((result) => {
             if (result) {
@@ -676,8 +778,14 @@ let KanbanComponent = class KanbanComponent {
             Object(_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_1__["moveItemInArray"])(event.container.data, event.previousIndex, event.currentIndex);
         }
         else {
-            this.updateTaskStatusAfterDragDrop(event);
-            Object(_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_1__["transferArrayItem"])(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+            if (event.container.id !== 'inpro') {
+                this.updateTaskStatusAfterDragDrop(event);
+                Object(_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_1__["transferArrayItem"])(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+            }
+            else if (event.container.id === 'inpro' && event.container.data.length < 3) {
+                this.updateTaskStatusAfterDragDrop(event);
+                Object(_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_1__["transferArrayItem"])(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
+            }
         }
     }
     updateTaskStatusAfterDragDrop(event) {
@@ -738,7 +846,7 @@ KanbanComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".container {\n  text-align: center;\n}\n.container .mat-list-item {\n  margin: 1rem;\n  width: auto !important;\n}\n.container .list {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-pack: center;\n          justify-content: center;\n  padding: 1rem;\n}\n.container .list a {\n  text-decoration: none;\n}\n.container .mat-card {\n  -webkit-transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);\n  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);\n  display: block;\n  position: relative;\n  padding: 1em;\n  border-radius: 4px;\n  cursor: pointer;\n}\n.container .mat-card .mat-card-subtitle {\n  font-size: 9px;\n}\n.container .edit {\n  position: absolute;\n  right: -10px;\n  top: -42px;\n  border: 2px solid #424242;\n  color: #424242;\n  cursor: pointer;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL21hanN0b3Ivd29ya3NwYWNlL2thbmJhbi1ib2FyZC9jbGllbnQvc3JjL2FwcC9jb21wb25lbnQvbWFpbi9tYWluLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21wb25lbnQvbWFpbi9tYWluLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7QUNDSjtBRENJO0VBQ0ksWUFBQTtFQUNBLHNCQUFBO0FDQ1I7QURDSTtFQUNJLG9CQUFBO0VBQUEsYUFBQTtFQUNBLGVBQUE7RUFDQSx3QkFBQTtVQUFBLHVCQUFBO0VBQ0EsYUFBQTtBQ0NSO0FEQ1E7RUFDSSxxQkFBQTtBQ0NaO0FERUk7RUFDSSxpRUFBQTtFQUFBLHlEQUFBO0VBQ0EsY0FBQTtFQUNBLGtCQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtBQ0FSO0FERVE7RUFDSSxjQUFBO0FDQVo7QURHSTtFQUNJLGtCQUFBO0VBQ0EsWUFBQTtFQUNBLFVBQUE7RUFDQSx5QkFBQTtFQUNBLGNBQUE7RUFDQSxlQUFBO0FDRFIiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnQvbWFpbi9tYWluLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lciB7XG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xuXG4gICAgJiAubWF0LWxpc3QtaXRlbSB7XG4gICAgICAgIG1hcmdpbjogMXJlbTtcbiAgICAgICAgd2lkdGg6IGF1dG8gIWltcG9ydGFudDtcbiAgICB9XG4gICAgJiAubGlzdCB7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIGZsZXgtd3JhcDogd3JhcDtcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gICAgICAgIHBhZGRpbmc6IDFyZW07XG5cbiAgICAgICAgJiBhIHtcbiAgICAgICAgICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbiAgICAgICAgfVxuICAgIH1cbiAgICAmIC5tYXQtY2FyZCB7XG4gICAgICAgIHRyYW5zaXRpb246IGJveC1zaGFkb3cgMjgwbXMgY3ViaWMtYmV6aWVyKDAuNCwgMCwgMC4yLCAxKTtcbiAgICAgICAgZGlzcGxheTogYmxvY2s7XG4gICAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgICAgcGFkZGluZzogMWVtO1xuICAgICAgICBib3JkZXItcmFkaXVzOiA0cHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcblxuICAgICAgICAmIC5tYXQtY2FyZC1zdWJ0aXRsZSB7XG4gICAgICAgICAgICBmb250LXNpemU6IDlweDtcbiAgICAgICAgfVxuICAgIH1cbiAgICAmIC5lZGl0IHtcbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICByaWdodDogLTEwcHg7XG4gICAgICAgIHRvcDogLTQycHg7XG4gICAgICAgIGJvcmRlcjogMnB4IHNvbGlkICM0MjQyNDI7XG4gICAgICAgIGNvbG9yOiAjNDI0MjQyO1xuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XG4gICAgfVxufVxuIiwiLmNvbnRhaW5lciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cbi5jb250YWluZXIgLm1hdC1saXN0LWl0ZW0ge1xuICBtYXJnaW46IDFyZW07XG4gIHdpZHRoOiBhdXRvICFpbXBvcnRhbnQ7XG59XG4uY29udGFpbmVyIC5saXN0IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC13cmFwOiB3cmFwO1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgcGFkZGluZzogMXJlbTtcbn1cbi5jb250YWluZXIgLmxpc3QgYSB7XG4gIHRleHQtZGVjb3JhdGlvbjogbm9uZTtcbn1cbi5jb250YWluZXIgLm1hdC1jYXJkIHtcbiAgdHJhbnNpdGlvbjogYm94LXNoYWRvdyAyODBtcyBjdWJpYy1iZXppZXIoMC40LCAwLCAwLjIsIDEpO1xuICBkaXNwbGF5OiBibG9jaztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBwYWRkaW5nOiAxZW07XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xufVxuLmNvbnRhaW5lciAubWF0LWNhcmQgLm1hdC1jYXJkLXN1YnRpdGxlIHtcbiAgZm9udC1zaXplOiA5cHg7XG59XG4uY29udGFpbmVyIC5lZGl0IHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICByaWdodDogLTEwcHg7XG4gIHRvcDogLTQycHg7XG4gIGJvcmRlcjogMnB4IHNvbGlkICM0MjQyNDI7XG4gIGNvbG9yOiAjNDI0MjQyO1xuICBjdXJzb3I6IHBvaW50ZXI7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".container {\n  text-align: center;\n}\n.container .mat-list-item {\n  margin: 1rem;\n  width: auto !important;\n}\n.container .list {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-pack: center;\n          justify-content: center;\n  padding: 1rem;\n}\n.container .list a {\n  text-decoration: none;\n}\n.container .mat-card {\n  -webkit-transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);\n  transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);\n  display: block;\n  position: relative;\n  padding: 3em;\n  border-radius: 4px;\n  cursor: pointer;\n  overflow: hidden;\n}\n.container .mat-card:hover .mat-card-header .mat-card-actions {\n  opacity: 1;\n}\n.container .mat-card .mat-card-footer {\n  font-size: 9px;\n}\n.container .mat-card-actions {\n  -webkit-transition: opacity 0.4s ease-in-out;\n  transition: opacity 0.4s ease-in-out;\n  opacity: 0;\n  position: absolute;\n  right: 0px;\n  top: 0px;\n  cursor: pointer;\n  margin: 0;\n  padding: 4px;\n}\n.container .mat-card-actions .mat-icon {\n  margin: 2px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL21hanN0b3Ivd29ya3NwYWNlL2thbmJhbi1ib2FyZC9jbGllbnQvc3JjL2FwcC9jb21wb25lbnQvbWFpbi9tYWluLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21wb25lbnQvbWFpbi9tYWluLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7QUNDSjtBRENJO0VBQ0ksWUFBQTtFQUNBLHNCQUFBO0FDQ1I7QURDSTtFQUNJLG9CQUFBO0VBQUEsYUFBQTtFQUNBLGVBQUE7RUFDQSx3QkFBQTtVQUFBLHVCQUFBO0VBQ0EsYUFBQTtBQ0NSO0FEQ1E7RUFDSSxxQkFBQTtBQ0NaO0FER0k7RUFDSSxpRUFBQTtFQUFBLHlEQUFBO0VBRUEsY0FBQTtFQUNBLGtCQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0FDRlI7QURJUTtFQUNJLFVBQUE7QUNGWjtBREtRO0VBQ0ksY0FBQTtBQ0haO0FETUk7RUFDSSw0Q0FBQTtFQUFBLG9DQUFBO0VBQ0EsVUFBQTtFQUVBLGtCQUFBO0VBQ0EsVUFBQTtFQUNBLFFBQUE7RUFDQSxlQUFBO0VBQ0EsU0FBQTtFQUNBLFlBQUE7QUNMUjtBRE9RO0VBQ0ksV0FBQTtBQ0xaIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50L21haW4vbWFpbi5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5jb250YWluZXIge1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcblxuICAgICYgLm1hdC1saXN0LWl0ZW0ge1xuICAgICAgICBtYXJnaW46IDFyZW07XG4gICAgICAgIHdpZHRoOiBhdXRvICFpbXBvcnRhbnQ7XG4gICAgfVxuICAgICYgLmxpc3Qge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBmbGV4LXdyYXA6IHdyYXA7XG4gICAgICAgIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICAgICAgICBwYWRkaW5nOiAxcmVtO1xuXG4gICAgICAgICYgYSB7XG4gICAgICAgICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG4gICAgICAgIH1cbiAgICB9XG5cbiAgICAmIC5tYXQtY2FyZCB7XG4gICAgICAgIHRyYW5zaXRpb246IGJveC1zaGFkb3cgMjgwbXMgY3ViaWMtYmV6aWVyKDAuNCwgMCwgMC4yLCAxKTtcblxuICAgICAgICBkaXNwbGF5OiBibG9jaztcbiAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlO1xuICAgICAgICBwYWRkaW5nOiAzZW07XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgICAgICY6aG92ZXIgLm1hdC1jYXJkLWhlYWRlciAubWF0LWNhcmQtYWN0aW9ucyB7XG4gICAgICAgICAgICBvcGFjaXR5OiAxO1xuICAgICAgICB9XG5cbiAgICAgICAgJiAubWF0LWNhcmQtZm9vdGVyIHtcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogOXB4O1xuICAgICAgICB9XG4gICAgfVxuICAgICYgLm1hdC1jYXJkLWFjdGlvbnMge1xuICAgICAgICB0cmFuc2l0aW9uOiBvcGFjaXR5IDAuNHMgZWFzZS1pbi1vdXQ7XG4gICAgICAgIG9wYWNpdHk6IDA7XG5cbiAgICAgICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgICAgICByaWdodDogMHB4O1xuICAgICAgICB0b3A6IDBweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIHBhZGRpbmc6IDRweDtcblxuICAgICAgICAmIC5tYXQtaWNvbiB7XG4gICAgICAgICAgICBtYXJnaW46IDJweDtcbiAgICAgICAgfVxuICAgIH1cbn1cbiIsIi5jb250YWluZXIge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG4uY29udGFpbmVyIC5tYXQtbGlzdC1pdGVtIHtcbiAgbWFyZ2luOiAxcmVtO1xuICB3aWR0aDogYXV0byAhaW1wb3J0YW50O1xufVxuLmNvbnRhaW5lciAubGlzdCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGZsZXgtd3JhcDogd3JhcDtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG4gIHBhZGRpbmc6IDFyZW07XG59XG4uY29udGFpbmVyIC5saXN0IGEge1xuICB0ZXh0LWRlY29yYXRpb246IG5vbmU7XG59XG4uY29udGFpbmVyIC5tYXQtY2FyZCB7XG4gIHRyYW5zaXRpb246IGJveC1zaGFkb3cgMjgwbXMgY3ViaWMtYmV6aWVyKDAuNCwgMCwgMC4yLCAxKTtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcGFkZGluZzogM2VtO1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG4gIGN1cnNvcjogcG9pbnRlcjtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbn1cbi5jb250YWluZXIgLm1hdC1jYXJkOmhvdmVyIC5tYXQtY2FyZC1oZWFkZXIgLm1hdC1jYXJkLWFjdGlvbnMge1xuICBvcGFjaXR5OiAxO1xufVxuLmNvbnRhaW5lciAubWF0LWNhcmQgLm1hdC1jYXJkLWZvb3RlciB7XG4gIGZvbnQtc2l6ZTogOXB4O1xufVxuLmNvbnRhaW5lciAubWF0LWNhcmQtYWN0aW9ucyB7XG4gIHRyYW5zaXRpb246IG9wYWNpdHkgMC40cyBlYXNlLWluLW91dDtcbiAgb3BhY2l0eTogMDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICByaWdodDogMHB4O1xuICB0b3A6IDBweDtcbiAgY3Vyc29yOiBwb2ludGVyO1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDRweDtcbn1cbi5jb250YWluZXIgLm1hdC1jYXJkLWFjdGlvbnMgLm1hdC1pY29uIHtcbiAgbWFyZ2luOiAycHg7XG59Il19 */");
 
 /***/ }),
 
@@ -757,7 +865,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
 /* harmony import */ var src_app_model_kanban__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/model/kanban */ "./src/app/model/kanban.ts");
 /* harmony import */ var src_app_service_kanban_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/service/kanban.service */ "./src/app/service/kanban.service.ts");
-/* harmony import */ var _kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../kanban-dialog/kanban-dialog.component */ "./src/app/component/kanban-dialog/kanban-dialog.component.ts");
+/* harmony import */ var _confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../confirmation-dialog/confirmation-dialog.component */ "./src/app/component/confirmation-dialog/confirmation-dialog.component.ts");
+/* harmony import */ var _kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../kanban-dialog/kanban-dialog.component */ "./src/app/component/kanban-dialog/kanban-dialog.component.ts");
+
 
 
 
@@ -773,17 +883,29 @@ let MainComponent = class MainComponent {
     ngOnInit() {
         this.getData();
     }
-    fixTimestamp(timestamp) {
-        const time = new Date(timestamp);
-        time.setUTCHours(time.getUTCHours() + 1);
-        return time
-            .toUTCString()
-            .split(' ')
-            .slice(0, 5)
-            .join(' ')
-            .toString();
+    confirm() {
+        return this.dialog.open(_confirmation_dialog_confirmation_dialog_component__WEBPACK_IMPORTED_MODULE_5__["ConfirmationDialogComponent"], {
+            width: '350px',
+            data: 'Do you want to delete this item?'
+        });
+    }
+    delete(id) {
+        console.log(id);
+        event.cancelBubble = true;
+        if (event.stopPropagation)
+            event.stopPropagation();
+        this.confirm()
+            .afterClosed()
+            .subscribe((result) => {
+            if (result) {
+                this._service.delete(id).subscribe(() => this.getData());
+            }
+        });
     }
     openDialogForEdit(kanban) {
+        event.cancelBubble = true;
+        if (event.stopPropagation)
+            event.stopPropagation();
         this.openDialog('Update Kanban', kanban);
     }
     openDialogForNew() {
@@ -797,7 +919,7 @@ let MainComponent = class MainComponent {
             kanban: kanban
         };
         this.dialog
-            .open(_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_5__["KanbanDialogComponent"], dialogConfig)
+            .open(_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_6__["KanbanDialogComponent"], dialogConfig)
             .afterClosed()
             .subscribe((result) => {
             if (result) {
@@ -945,7 +1067,7 @@ TaskDialogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudC90YXNrL3Rhc2suY29tcG9uZW50LnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".mat-card {\n  padding: 0;\n  box-sizing: border-box;\n  cursor: move;\n}\n.mat-card:hover .mat-card-actions {\n  opacity: 1;\n}\n.mat-card .mat-card-header {\n  border-top-left-radius: 4px;\n  border-top-right-radius: 4px;\n  height: 2em;\n}\n.mat-card .mat-card-actions {\n  -webkit-transition: opacity 0.4s ease-in-out;\n  transition: opacity 0.4s ease-in-out;\n  opacity: 0;\n  position: absolute;\n  right: 0px;\n  top: 0px;\n  cursor: pointer;\n  margin: 0;\n  padding: 0 4px;\n}\n.mat-card .mat-card-actions .mat-icon {\n  margin: 2px;\n}\n.mat-card .mat-card-footer {\n  font-size: 10px;\n  margin: 0;\n}\n.mat-card .mat-card-footer span {\n  padding: 4px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL21hanN0b3Ivd29ya3NwYWNlL2thbmJhbi1ib2FyZC9jbGllbnQvc3JjL2FwcC9jb21wb25lbnQvdGFzay90YXNrLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21wb25lbnQvdGFzay90YXNrLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUksVUFBQTtFQUNBLHNCQUFBO0VBQ0EsWUFBQTtBQ0FKO0FERUk7RUFDSSxVQUFBO0FDQVI7QURHSTtFQUNJLDJCQUFBO0VBQ0EsNEJBQUE7RUFDQSxXQUFBO0FDRFI7QURJSTtFQUNJLDRDQUFBO0VBQUEsb0NBQUE7RUFDQSxVQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0VBQ0EsUUFBQTtFQUNBLGVBQUE7RUFDQSxTQUFBO0VBQ0EsY0FBQTtBQ0ZSO0FESVE7RUFDSSxXQUFBO0FDRlo7QURTSTtFQUdJLGVBQUE7RUFDQSxTQUFBO0FDVFI7QURXUTtFQUVJLFlBQUE7QUNWWiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudC90YXNrL3Rhc2suY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubWF0LWNhcmQge1xuICAgIC8vIG1hcmdpbjogM3B4O1xuICAgIHBhZGRpbmc6IDA7XG4gICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcbiAgICBjdXJzb3I6IG1vdmU7XG5cbiAgICAmOmhvdmVyIC5tYXQtY2FyZC1hY3Rpb25zIHtcbiAgICAgICAgb3BhY2l0eTogMTtcbiAgICB9XG5cbiAgICAmIC5tYXQtY2FyZC1oZWFkZXIge1xuICAgICAgICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiA0cHg7XG4gICAgICAgIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiA0cHg7XG4gICAgICAgIGhlaWdodDogMmVtO1xuICAgIH1cblxuICAgICYgLm1hdC1jYXJkLWFjdGlvbnMge1xuICAgICAgICB0cmFuc2l0aW9uOiBvcGFjaXR5IDAuNHMgZWFzZS1pbi1vdXQ7XG4gICAgICAgIG9wYWNpdHk6IDA7XG4gICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICAgICAgcmlnaHQ6IDBweDtcbiAgICAgICAgdG9wOiAwcHg7XG4gICAgICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBwYWRkaW5nOiAwIDRweDtcblxuICAgICAgICAmIC5tYXQtaWNvbiB7XG4gICAgICAgICAgICBtYXJnaW46IDJweDtcbiAgICAgICAgfVxuICAgIH1cblxuICAgICYgLm1hdC1jYXJkLWNvbnRlbnQge1xuICAgIH1cblxuICAgICYgLm1hdC1jYXJkLWZvb3RlciB7XG4gICAgICAgIC8vIGRpc3BsYXk6IGZsZXg7XG4gICAgICAgIC8vIGp1c3RpZnktY29udGVudDogZmxleC1lbmQ7XG4gICAgICAgIGZvbnQtc2l6ZTogMTBweDtcbiAgICAgICAgbWFyZ2luOiAwO1xuXG4gICAgICAgICYgc3BhbiB7XG4gICAgICAgICAgICAvLyBtYXJnaW46IDRweDtcbiAgICAgICAgICAgIHBhZGRpbmc6IDRweDtcbiAgICAgICAgICAgIC8vIHBvc2l0aW9uOiBpbmhlcml0O1xuICAgICAgICAgICAgLy8gcmlnaHQ6IDA7XG4gICAgICAgICAgICAvLyBmbG9hdDogcmlnaHQ7XG4gICAgICAgIH1cbiAgICB9XG59XG4iLCIubWF0LWNhcmQge1xuICBwYWRkaW5nOiAwO1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94O1xuICBjdXJzb3I6IG1vdmU7XG59XG4ubWF0LWNhcmQ6aG92ZXIgLm1hdC1jYXJkLWFjdGlvbnMge1xuICBvcGFjaXR5OiAxO1xufVxuLm1hdC1jYXJkIC5tYXQtY2FyZC1oZWFkZXIge1xuICBib3JkZXItdG9wLWxlZnQtcmFkaXVzOiA0cHg7XG4gIGJvcmRlci10b3AtcmlnaHQtcmFkaXVzOiA0cHg7XG4gIGhlaWdodDogMmVtO1xufVxuLm1hdC1jYXJkIC5tYXQtY2FyZC1hY3Rpb25zIHtcbiAgdHJhbnNpdGlvbjogb3BhY2l0eSAwLjRzIGVhc2UtaW4tb3V0O1xuICBvcGFjaXR5OiAwO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHJpZ2h0OiAwcHg7XG4gIHRvcDogMHB4O1xuICBjdXJzb3I6IHBvaW50ZXI7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZzogMCA0cHg7XG59XG4ubWF0LWNhcmQgLm1hdC1jYXJkLWFjdGlvbnMgLm1hdC1pY29uIHtcbiAgbWFyZ2luOiAycHg7XG59XG4ubWF0LWNhcmQgLm1hdC1jYXJkLWZvb3RlciB7XG4gIGZvbnQtc2l6ZTogMTBweDtcbiAgbWFyZ2luOiAwO1xufVxuLm1hdC1jYXJkIC5tYXQtY2FyZC1mb290ZXIgc3BhbiB7XG4gIHBhZGRpbmc6IDRweDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -964,10 +1086,27 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let TaskComponent = class TaskComponent {
-    constructor() { }
-    ngOnInit() {
+    constructor() {
+        this.delete = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.edit = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+    }
+    ngOnInit() { }
+    remove() {
+        this.delete.emit(this.task.id);
+    }
+    openDialogForEdit() {
+        this.edit.emit(this.task);
     }
 };
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], TaskComponent.prototype, "task", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+], TaskComponent.prototype, "delete", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+], TaskComponent.prototype, "edit", void 0);
 TaskComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-task',
@@ -1133,8 +1272,8 @@ let TaskService = class TaskService {
     getById(id) {
         return this._http.get(this.path + '/' + id);
     }
-    delete(pbe) {
-        return this._http.delete(this.path + '/' + pbe.id);
+    delete(id) {
+        return this._http.delete(this.path + '/' + id);
     }
     create(pbe) {
         return this._http.post(this.path, pbe);

@@ -40,9 +40,7 @@ export class KanbanDialogComponent implements OnInit {
         this.dialogRef.close(kanban)
     }
 
-    delete(): void {
-        this._service.delete(this.kanban.id).subscribe(() => this.close())
-    }
+
 
     save() {
         if (this.form.valid) {

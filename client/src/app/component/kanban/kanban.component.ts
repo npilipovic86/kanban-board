@@ -6,6 +6,7 @@ import { Kanban } from 'src/app/model/kanban'
 import { Task } from 'src/app/model/task'
 import { KanbanService } from 'src/app/service/kanban.service'
 import { TaskService } from 'src/app/service/task.service'
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component'
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component'
 
 @Component({
@@ -28,7 +29,26 @@ export class KanbanComponent implements OnInit {
     ngOnInit() {
         this.getKanban()
     }
-
+    deleteTask(id: string) {
+        console.log(id)
+        this.confirm()
+            .afterClosed()
+            .subscribe((result) => {
+                if (result) {
+                    this._taskService.delete(id).subscribe(() => {
+                        let index = this.kanban.tasks.findIndex((e) => e.id === id)
+                        this.kanban.tasks.splice(index, 1)
+                        this.splitTasksByStatus(this.kanban.tasks)
+                    })
+                }
+            })
+    }
+    confirm(): any {
+        return this.dialog.open(ConfirmationDialogComponent, {
+            width: '350px',
+            data: 'Do you want to delete this item?'
+        })
+    }
     openDialogForNewTask(): void {
         this.openDialog('Create New Task', new Task())
     }
@@ -61,12 +81,17 @@ export class KanbanComponent implements OnInit {
                 }
             })
     }
-    drop(event: CdkDragDrop<string[]>) {
+    drop(event: CdkDragDrop<any>) {
         if (event.previousContainer === event.container) {
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex)
         } else {
-            this.updateTaskStatusAfterDragDrop(event)
-            transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
+            if (event.container.id !== 'inpro') {
+                this.updateTaskStatusAfterDragDrop(event)
+                transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
+            } else if (event.container.id === 'inpro' && event.container.data.length < 3) {
+                this.updateTaskStatusAfterDragDrop(event)
+                transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
+            }
         }
     }
 

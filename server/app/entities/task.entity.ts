@@ -24,7 +24,6 @@ export class Task {
         (type) => Kanban,
         (kanban) => kanban.tasks,
         { onDelete: 'CASCADE' }
-        // onUpdate: 'CASCADE'
     )
     @JoinColumn({ name: 'kanban_id', referencedColumnName: 'id' })
     kanban: Kanban

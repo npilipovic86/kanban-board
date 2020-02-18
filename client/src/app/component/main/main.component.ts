@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { MatDialog, MatDialogConfig } from '@angular/material'
 import { Kanban } from 'src/app/model/kanban'
 import { KanbanService } from 'src/app/service/kanban.service'
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component'
 import { KanbanDialogComponent } from '../kanban-dialog/kanban-dialog.component'
 
 @Component({
@@ -19,17 +20,27 @@ export class MainComponent implements OnInit {
     ngOnInit() {
         this.getData()
     }
-    fixTimestamp(timestamp: string): string {
-        const time = new Date(timestamp)
-        time.setUTCHours(time.getUTCHours() + 1)
-        return time
-            .toUTCString()
-            .split(' ')
-            .slice(0, 5)
-            .join(' ')
-            .toString()
+    confirm(): any {
+        return this.dialog.open(ConfirmationDialogComponent, {
+            width: '350px',
+            data: 'Do you want to delete this item?'
+        })
+    }
+    delete(id): void {
+        console.log(id)
+        event.cancelBubble = true
+        if (event.stopPropagation) event.stopPropagation()
+        this.confirm()
+            .afterClosed()
+            .subscribe((result) => {
+                if (result) {
+                    this._service.delete(id).subscribe(() => this.getData())
+                }
+            })
     }
     openDialogForEdit(kanban: Kanban) {
+        event.cancelBubble = true
+        if (event.stopPropagation) event.stopPropagation()
         this.openDialog('Update Kanban', kanban)
     }
     openDialogForNew(): void {

@@ -17,8 +17,8 @@ export class TaskService {
     getById(id: String): Observable<Task> {
         return this._http.get<Task>(this.path + '/' + id)
     }
-    delete(pbe: Task): Observable<void> {
-        return this._http.delete<void>(this.path + '/' + pbe.id)
+    delete(id: string): Observable<void> {
+        return this._http.delete<void>(this.path + '/' + id)
     }
     create(pbe: Task): Observable<Task> {
         return this._http.post<Task>(this.path, pbe)

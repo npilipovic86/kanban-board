@@ -8,16 +8,7 @@ export class Kanban {
 
     @Column()
     title: string
-    //TODO pogledati
-    // @Column({
-    //     nullable: true,
-    //     readonly: true,
-    //     transformer: {
-    //         from: (value?: any | null) => value,
-    //         to: (value?: string | null) => (value === undefined || value === null ? value : timeConverter.utcTimeToCetConvert())
-    //     }
-    // })
-    // time: string
+
     @CreateDateColumn()
     timestamp: string
 

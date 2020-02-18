@@ -4,8 +4,8 @@
     "description": "Kanban board server",
     "main": " server.ts",
     "scripts": {
-        "start": "ts-node server.ts",
-        "dev": "nodemon server"
+        "start": "ts-node server.ts -production",
+        "dev": "nodemon server -development"
     },
     "keywords": [],
     "author": "Nikola Pilipovic (npilipovic86@gmail.com)",

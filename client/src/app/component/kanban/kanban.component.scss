@@ -1,15 +1,17 @@
-.page-container {
+.container {
     font-family: 'Open Sans', sans-serif;
+    text-align: center;
 }
 
 .kanban-board {
     display: flex;
+    justify-content: center;
 }
 
 .list-container {
     width: 400px;
     max-width: 100%;
-    margin: 0 25px 25px 0;
+    margin: 0 1em;
     display: inline-block;
     vertical-align: top;
 }
@@ -18,13 +20,17 @@
     padding: 2px 2px 2px 2px;
     border: solid 1px #ccc;
     min-height: 400px;
-    background: white;
+    // background: white;
     border-radius: 4px;
     overflow: hidden;
     display: block;
-}
 
-.sticky-note {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+}
+// ovo je iskljuceno
+sticky-note {
     padding: 20px 10px;
     border: solid 1px #ccc;
     border-radius: 4px;
@@ -40,6 +46,12 @@
     font-size: 14px;
 }
 
+.sticky-note {
+    border-radius: 4px;
+    margin-top: 2px;
+
+    font-size: 14px;
+}
 .cdk-drag-preview {
     box-sizing: border-box;
     border-radius: 4px;
