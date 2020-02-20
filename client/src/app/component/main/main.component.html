@@ -8,19 +8,8 @@
     <br />
     <mat-divider></mat-divider>
     <mat-list class="list">
-        <mat-list-item class="list" *ngFor="let item of boards">
-            <mat-card routerLink="/kanbans/{{ item.id }}">
-                <mat-card-header>
-                    <mat-card-title>{{ item.title }}</mat-card-title>
-                    <mat-card-actions>
-                        <mat-icon matTooltip="Delete" [matTooltipPosition]="['above']" (click)="delete(item.id)">delete</mat-icon>
-                        <mat-icon matTooltip="Edit" [matTooltipPosition]="['above']" (click)="openDialogForEdit(item)">edit</mat-icon>
-                    </mat-card-actions>
-                </mat-card-header>
-                <mat-card-footer>
-                    {{ item?.timestamp | date: 'E, dd MMM yy, HH:mm':'+0100' }}
-                </mat-card-footer>
-            </mat-card>
+        <mat-list-item class="list1" *ngFor="let item of boards">
+            <app-board [item]="item" (delete)="delete($event)" (edit)="openDialogForEdit($event)"></app-board>
         </mat-list-item>
     </mat-list>
 </div>

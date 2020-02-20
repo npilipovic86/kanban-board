@@ -1,4 +1,5 @@
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { List } from './list.entity'
 // import * as timeConverter from '../util/timeConverter'
 import { Task } from './task.entity'
 @Entity()
@@ -18,4 +19,12 @@ export class Kanban {
         { cascade: ['insert', 'update', 'remove'], eager: true }
     )
     tasks?: Task[]
+
+    // @Column({ type: 'simple-array' })
+    @OneToMany(
+        (type) => List,
+        (l) => l.kanban,
+        { cascade: ['insert', 'update', 'remove'], eager: true }
+    )
+    lists?: List[]
 }

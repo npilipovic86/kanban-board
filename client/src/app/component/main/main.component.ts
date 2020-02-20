@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import { MatDialog, MatDialogConfig } from '@angular/material'
-import { Kanban } from 'src/app/model/kanban'
-import { KanbanService } from 'src/app/service/kanban.service'
+import { Board } from 'src/app/model/board'
+import { BoardService } from 'src/app/service/board.service'
+import { BoardDialogComponent } from '../board-dialog/board-dialog.component'
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component'
-import { KanbanDialogComponent } from '../kanban-dialog/kanban-dialog.component'
 
 @Component({
     selector: 'app-main',
@@ -11,9 +11,9 @@ import { KanbanDialogComponent } from '../kanban-dialog/kanban-dialog.component'
     styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
-    private boards: Kanban[]
+    private boards: Board[]
 
-    constructor(private _service: KanbanService, private dialog: MatDialog) {
+    constructor(private _service: BoardService, private dialog: MatDialog) {
         this.boards = []
     }
 
@@ -38,15 +38,15 @@ export class MainComponent implements OnInit {
                 }
             })
     }
-    openDialogForEdit(kanban: Kanban) {
+    openDialogForEdit(kanban: Board) {
         event.cancelBubble = true
         if (event.stopPropagation) event.stopPropagation()
-        this.openDialog('Update Kanban', kanban)
+        this.openDialog('Update Board', kanban)
     }
     openDialogForNew(): void {
-        this.openDialog('Create new Kanban', new Kanban())
+        this.openDialog('Create new Board', new Board())
     }
-    openDialog(title: string, kanban: Kanban): void {
+    openDialog(title: string, kanban: Board): void {
         const dialogConfig = new MatDialogConfig()
         dialogConfig.autoFocus = true
         dialogConfig.data = {
@@ -54,7 +54,7 @@ export class MainComponent implements OnInit {
             kanban: kanban
         }
         this.dialog
-            .open(KanbanDialogComponent, dialogConfig)
+            .open(BoardDialogComponent, dialogConfig)
             .afterClosed()
             .subscribe((result) => {
                 if (result) {
@@ -71,7 +71,7 @@ export class MainComponent implements OnInit {
             })
     }
     getData(): void {
-        this._service.getAll().subscribe((res: Kanban[]) => {
+        this._service.getAll().subscribe((res: Board[]) => {
             this.boards = res
         })
     }

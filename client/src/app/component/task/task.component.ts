@@ -9,7 +9,7 @@ import { Task } from 'src/app/model/task'
 export class TaskComponent implements OnInit {
     @Input() task: Task
     @Output() delete: EventEmitter<string> = new EventEmitter()
-    @Output() edit:EventEmitter<Task> = new EventEmitter()
+    @Output() edit: EventEmitter<Task> = new EventEmitter()
     constructor() {}
 
     ngOnInit() {}
@@ -17,6 +17,6 @@ export class TaskComponent implements OnInit {
         this.delete.emit(this.task.id)
     }
     openDialogForEdit(): void {
-      this.edit.emit(this.task)
+        this.edit.emit(this.task)
     }
 }

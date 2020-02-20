@@ -78,3 +78,15 @@ export const addNewTask = async (req: Request, res: Response) => {
 
     retVal ? res.status(200).send(retVal) : res.sendStatus(400)
 }
+export const addNewList = async (req: Request, res: Response) => {
+    let repository: KanbanRepository = new KanbanRepository()
+    let retVal
+    console.log('TCL: addNewList ->  req.body', req.body)
+    try {
+        retVal = await repository.addNewList(req.params.id, req.body)
+    } catch (e) {
+        console.log(e)
+    }
+
+    retVal ? res.status(200).send(retVal) : res.sendStatus(400)
+}

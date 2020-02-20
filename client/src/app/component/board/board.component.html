@@ -1,0 +1,12 @@
+<mat-card routerLink="/boards/{{ item.id }}">
+    <mat-card-header>
+        <mat-card-title>{{ item.title }}</mat-card-title>
+        <mat-card-actions>
+            <mat-icon matTooltip="Delete" [matTooltipPosition]="['above']" (click)="remove()">delete</mat-icon>
+            <mat-icon matTooltip="Edit" [matTooltipPosition]="['above']" (click)="openDialogForEdit()">edit</mat-icon>
+        </mat-card-actions>
+    </mat-card-header>
+    <mat-card-footer>
+        {{ item?.timestamp | date: 'E, dd MMM yy, HH:mm':'+0100' }}
+    </mat-card-footer>
+</mat-card>

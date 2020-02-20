@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material'
 import { Task } from 'src/app/model/task'
-import { KanbanService } from 'src/app/service/kanban.service'
+import { BoardService } from 'src/app/service/board.service'
 import { TaskService } from 'src/app/service/task.service'
 import { FormService } from '../../service/form.service'
 
@@ -16,17 +16,20 @@ export class TaskDialogComponent implements OnInit {
     kanbanTitle: string
     form: FormGroup
     task: Task
+    kanbans: any
+    column: any
 
     constructor(
         private fb: FormBuilder,
         private dialogRef: MatDialogRef<TaskDialogComponent>,
         @Inject(MAT_DIALOG_DATA) data,
-        private _kanbanService: KanbanService,
+        private _kanbanService: BoardService,
         private _taskService: TaskService,
         private _formService: FormService
     ) {
         this.kanbanTitle = data.title
-        this.kanbanId = data.kanbanId
+        this.column = data.column
+        this.kanbanId = data.boardId
         this.task = data.task
     }
 
@@ -49,7 +52,7 @@ export class TaskDialogComponent implements OnInit {
         this._formService.markFormGroupTouched(this.form)
         if (this.form.valid) {
             if (!this.task.id) {
-                this.form.value.status = 'TODO'
+                this.form.value.status = this.column
                 this._kanbanService.saveNewTaskInKanban(this.kanbanId, this.form.value).subscribe((response: Task) => {
                     this.close(response)
                 })

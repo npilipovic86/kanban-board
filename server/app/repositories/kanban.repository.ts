@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm'
 import { Kanban } from '../entities/kanban.entity'
+import { List } from '../entities/list.entity'
 import { Task } from '../entities/task.entity'
 
 export class KanbanRepository {
@@ -29,5 +30,15 @@ export class KanbanRepository {
         let retVal = await this.repository.save(kanban)
         let result = retVal.tasks.find((t) => t.description === task.description && t.title === task.title && t.color === task.color)
         return result
+    }
+
+    async addNewList(boardId: string, list: List) {
+        const kanban = await this.getById(boardId)
+
+        let l = await getRepository(List).save(list)
+
+        kanban.lists.push(l)
+        await this.repository.save(kanban)
+        return l
     }
 }

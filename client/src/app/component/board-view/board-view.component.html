@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="page-title">
+        <h1>{{ kanban?.title }}</h1>
+    </div>
+    <div>
+        <button mat-raised-button (click)="openDialogForNewTask()">Create New Task</button>
+        <button mat-raised-button (click)="openDialogForNewList()">Create New List</button>
+    </div>
+    <div class="kanban-board" *ngIf="kanban">
+        <div class="list-container" *ngFor="let item of kanban.lists">
+            <h2>{{ item.title }}</h2>
+            <div
+                cdkDropList
+                id="{{ item.title }}"
+                [cdkDropListData]="lists[item.title]"
+                [cdkDropListConnectedTo]="dropListConnectedTo()"
+                class="board-list"
+                (cdkDropListDropped)="drop($event)"
+            >
+                <div class="sticky-note" *ngFor="let task of lists[item.title]" cdkDrag [style.background-color]="task.color" id="{{ task.id }}">
+                    <app-task [task]="task" (delete)="deleteTask($event)" (edit)="openDialogForEditTask($event)"></app-task>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

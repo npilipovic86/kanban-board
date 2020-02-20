@@ -12,24 +12,28 @@ import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+import { BoardDialogComponent } from './component/board-dialog/board-dialog.component'
+import { BoardViewComponent } from './component/board-view/board-view.component'
+import { BoardComponent } from './component/board/board.component'
 import { ConfirmationDialogComponent } from './component/confirmation-dialog/confirmation-dialog.component'
 import { KanbanDialogComponent } from './component/kanban-dialog/kanban-dialog.component'
-import { KanbanComponent } from './component/kanban/kanban.component'
 import { MainComponent } from './component/main/main.component'
 import { TaskDialogComponent } from './component/task-dialog/task-dialog.component'
 import { TaskComponent } from './component/task/task.component'
-import { KanbanService } from './service/kanban.service'
+import { BoardService } from './service/board.service'
 import { TaskService } from './service/task.service'
 
 @NgModule({
     declarations: [
         AppComponent,
-        KanbanComponent,
         MainComponent,
         KanbanDialogComponent,
         TaskDialogComponent,
         TaskComponent,
-        ConfirmationDialogComponent
+        ConfirmationDialogComponent,
+        BoardComponent,
+        BoardDialogComponent,
+        BoardViewComponent
     ],
     imports: [
         BrowserModule,
@@ -48,8 +52,8 @@ import { TaskService } from './service/task.service'
         MatIconModule,
         MatTooltipModule
     ],
-    providers: [KanbanService, TaskService],
+    providers: [BoardService, TaskService],
     bootstrap: [AppComponent],
-    entryComponents: [KanbanDialogComponent, TaskDialogComponent, ConfirmationDialogComponent]
+    entryComponents: [KanbanDialogComponent, TaskDialogComponent, ConfirmationDialogComponent, BoardDialogComponent]
 })
 export class AppModule {}

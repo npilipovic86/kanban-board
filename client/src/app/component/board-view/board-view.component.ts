@@ -2,29 +2,32 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 import { Component, OnInit } from '@angular/core'
 import { MatDialog, MatDialogConfig } from '@angular/material'
 import { ActivatedRoute } from '@angular/router'
-import { Kanban } from 'src/app/model/kanban'
+import { Board } from 'src/app/model/board'
 import { Task } from 'src/app/model/task'
-import { KanbanService } from 'src/app/service/kanban.service'
+import { BoardService } from 'src/app/service/board.service'
 import { TaskService } from 'src/app/service/task.service'
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component'
+import { KanbanDialogComponent } from '../kanban-dialog/kanban-dialog.component'
 import { TaskDialogComponent } from '../task-dialog/task-dialog.component'
 
 @Component({
-    selector: 'app-kanban',
-    templateUrl: './kanban.component.html',
-    styleUrls: ['./kanban.component.scss']
+    selector: 'app-board-view',
+    templateUrl: './board-view.component.html',
+    styleUrls: ['./board-view.component.scss']
 })
-export class KanbanComponent implements OnInit {
-    kanban: Kanban
-    todos: Task[]
-    inProgress: Task[]
-    dones: Task[] = []
+export class BoardViewComponent implements OnInit {
+    kanban: Board
+    lists: any = []
 
-    constructor(private _kanbanService: KanbanService, private _taskService: TaskService, private route: ActivatedRoute, private dialog: MatDialog) {
-        this.todos = []
-        this.inProgress = []
-        this.dones = []
-    }
+    kanbans: Board[]
+
+    constructor(
+        // private _boardService: BoardService,
+        private _kanbanService: BoardService,
+        private _taskService: TaskService,
+        private route: ActivatedRoute,
+        private dialog: MatDialog
+    ) {}
 
     ngOnInit() {
         this.getKanban()
@@ -38,7 +41,7 @@ export class KanbanComponent implements OnInit {
                     this._taskService.delete(id).subscribe(() => {
                         let index = this.kanban.tasks.findIndex((e) => e.id === id)
                         this.kanban.tasks.splice(index, 1)
-                        this.splitTasksByStatus(this.kanban.tasks)
+                        this.splitTasksByStatus()
                     })
                 }
             })
@@ -48,6 +51,10 @@ export class KanbanComponent implements OnInit {
             width: '350px',
             data: 'Do you want to delete this item?'
         })
+    }
+
+    dropListConnectedTo() {
+        return this.kanban.lists.map((e) => e.title)
     }
     openDialogForNewTask(): void {
         this.openDialog('Create New Task', new Task())
@@ -62,7 +69,8 @@ export class KanbanComponent implements OnInit {
         dialogConfig.autoFocus = true
         dialogConfig.data = {
             title: title,
-            kanbanId: this.kanban.id,
+            boardId: this.route.snapshot.paramMap.get('id'),
+            column: this.kanban.lists[0].title,
             task: task
         }
         this.dialog
@@ -77,7 +85,34 @@ export class KanbanComponent implements OnInit {
                         let index = this.kanban.tasks.findIndex((e) => e.id === result.id)
                         this.kanban.tasks[index] = result
                     }
-                    this.splitTasksByStatus(this.kanban.tasks)
+                    this.splitTasksByStatus()
+                }
+            })
+    }
+
+    openDialogForEditList(list: string) {
+        event.cancelBubble = true
+        if (event.stopPropagation) event.stopPropagation()
+        this.openDialogForList('Update Kanban')
+    }
+    openDialogForNewList(): void {
+        this.openDialogForList('Create new Kanban')
+    }
+    openDialogForList(title: string): void {
+        const dialogConfig = new MatDialogConfig()
+        dialogConfig.autoFocus = true
+        dialogConfig.data = {
+            title: title,
+            boardId: this.route.snapshot.paramMap.get('id')
+        }
+        this.dialog
+            .open(KanbanDialogComponent, dialogConfig)
+            .afterClosed()
+            .subscribe((result) => {
+                if (result) {
+                    this.kanban.lists.push(result)
+                } else {
+                    this.getKanban()
                 }
             })
     }
@@ -85,46 +120,41 @@ export class KanbanComponent implements OnInit {
         if (event.previousContainer === event.container) {
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex)
         } else {
-            if (event.container.id !== 'inpro') {
-                this.updateTaskStatusAfterDragDrop(event)
-                transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
-            } else if (event.container.id === 'inpro' && event.container.data.length < 3) {
-                this.updateTaskStatusAfterDragDrop(event)
-                transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
-            }
+            this.updateTaskStatusAfterDragDrop(event)
+            transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
         }
     }
 
     private updateTaskStatusAfterDragDrop(event: CdkDragDrop<string[], string[]>) {
         let taskId = event.item.element.nativeElement.id
+
         let containerId = event.container.id
-        let task = this.kanban.tasks.find((e) => e.id === taskId)
-        this.updateTaskStatus(task, containerId)
+
+        let task = this.kanban.tasks.find((t) => t.id === taskId)
+
+        if (task) this.updateTaskStatus(task, containerId)
     }
 
     private getKanban(): void {
         const id = this.route.snapshot.paramMap.get('id')
 
-        this._kanbanService.getById(id).subscribe((response: Kanban) => {
+        this._kanbanService.getById(id).subscribe((response: Board) => {
             this.kanban = response
-            this.splitTasksByStatus(this.kanban.tasks)
+            this.splitTasksByStatus()
         })
     }
 
     private updateTaskStatus(task: Task, containerId: string): void {
-        if (containerId === 'todo') {
-            task.status = 'TODO'
-        } else if (containerId === 'inpro') {
-            task.status = 'INPROGRESS'
-        } else {
-            task.status = 'DONE'
-        }
+        task.status = containerId
+
         this._taskService.update(task).subscribe()
     }
 
-    private splitTasksByStatus(tasks: Task[]): void {
-        this.todos = tasks.filter((t) => t.status === 'TODO')
-        this.inProgress = tasks.filter((t) => t.status === 'INPROGRESS')
-        this.dones = tasks.filter((t) => t.status === 'DONE')
+    private splitTasksByStatus(): void {
+        this.kanban.lists.forEach((l) => {
+            this.lists[l.title] = this.kanban.tasks.filter((t) => t.status === l.title)
+        })
+
+        console.log('lists', this.lists)
     }
 }
