@@ -1,13 +1,13 @@
 <div class="container">
     <div class="page-title">
-        <h1>{{ kanban?.title }}</h1>
+        <h1>{{ board?.title }}</h1>
     </div>
     <div>
         <button mat-raised-button (click)="openDialogForNewTask()">Create New Task</button>
         <button mat-raised-button (click)="openDialogForNewList()">Create New List</button>
     </div>
-    <div class="kanban-board" *ngIf="kanban">
-        <div class="list-container" *ngFor="let item of kanban.lists">
+    <div class="kanban-board" *ngIf="board">
+        <div class="list-container" *ngFor="let item of board.lists">
             <h2>{{ item.title }}</h2>
             <div
                 cdkDropList

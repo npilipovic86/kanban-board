@@ -24,7 +24,7 @@ export class BoardDialogComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) data,
         private _service: BoardService
     ) {
-        this.dialogTitle = data.title
+        this.dialogTitle = data.dialogTitle
         console.log('TCL: BoardDialogComponent -> data', data)
         this.board = data.kanban
         this.showDeleteButton = false

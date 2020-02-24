@@ -6,4 +6,5 @@ export class Task {
     status?: string
     timestamp?: string
     kanbanId?: string
+    
 }

@@ -13,10 +13,10 @@ import { FormService } from '../../service/form.service'
 })
 export class TaskDialogComponent implements OnInit {
     kanbanId: string
-    kanbanTitle: string
+    dialogTitle: string
     form: FormGroup
     task: Task
-    kanbans: any
+    // kanbans: any
     column: any
 
     constructor(
@@ -27,7 +27,7 @@ export class TaskDialogComponent implements OnInit {
         private _taskService: TaskService,
         private _formService: FormService
     ) {
-        this.kanbanTitle = data.title
+        this.dialogTitle = data.dialogTitle
         this.column = data.column
         this.kanbanId = data.boardId
         this.task = data.task

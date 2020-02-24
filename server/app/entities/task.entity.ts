@@ -1,5 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
-import { Kanban } from './kanban.entity'
+import { Board } from './board.entity'
+
 @Entity()
 export class Task {
     @PrimaryGeneratedColumn('uuid')
@@ -21,10 +22,10 @@ export class Task {
     timestamp: string
 
     @ManyToOne(
-        (type) => Kanban,
+        (type) => Board,
         (k) => k.lists,
         { onDelete: 'CASCADE' }
     )
-    @JoinColumn({ name: 'kanban_id', referencedColumnName: 'id' })
-    kanban: Kanban
+    @JoinColumn({ name: 'board_id', referencedColumnName: 'id' })
+    board: Board
 }

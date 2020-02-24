@@ -1,17 +1,30 @@
-// import { Column, CreateDateColumn, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
-// import { Kanban } from './kanban.entity'
-// @Entity()
-// export class Board {
-//     @PrimaryGeneratedColumn('uuid')
-//     id: string
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm'
+import { List } from './list.entity'
+import { Task } from './task.entity'
 
-//     @Column()
-//     title: string
 
-//     @CreateDateColumn()
-//     timestamp: string
+@Entity()
+export class Board {
+    @PrimaryGeneratedColumn('uuid')
+    id: string
 
-//     @ManyToMany((type) => Kanban, { cascade: ['insert', 'update', 'remove'], eager: true })
-//     @JoinTable()
-//     kanbans?: Kanban[]
-// }
+    @Column()
+    title: string
+
+    @CreateDateColumn()
+    timestamp: string
+
+    @OneToMany(
+        (type) => Task,
+        (t) => t.board,
+        { cascade: ['insert', 'update', 'remove'], eager: true }
+    )
+    tasks?: Task[]
+
+    @OneToMany(
+        (type) => List,
+        (l) => l.board,
+        { cascade: ['insert', 'update', 'remove'], eager: true }
+    )
+    lists?: List[]
+}

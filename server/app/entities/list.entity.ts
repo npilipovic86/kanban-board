@@ -1,18 +1,19 @@
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm'
-import { Kanban } from './kanban.entity'
+import { Board } from './board.entity'
+
 @Entity()
 export class List {
-    @PrimaryGeneratedColumn('uuid')
-    id: string
+    @PrimaryGeneratedColumn()
+    id: number
 
     @Column()
     title: string
 
     @ManyToOne(
-        (type) => Kanban,
+        (type) => Board,
         (k) => k.lists,
         { onDelete: 'CASCADE' }
     )
-    @JoinColumn({ name: 'kanban_id', referencedColumnName: 'id' })
-    kanban?: Kanban
+    @JoinColumn({ name: 'board_id', referencedColumnName: 'id' })
+    board?: Board
 }

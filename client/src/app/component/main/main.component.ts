@@ -46,11 +46,11 @@ export class MainComponent implements OnInit {
     openDialogForNew(): void {
         this.openDialog('Create new Board', new Board())
     }
-    openDialog(title: string, kanban: Board): void {
+    openDialog(dialogTitle: string, kanban: Board): void {
         const dialogConfig = new MatDialogConfig()
         dialogConfig.autoFocus = true
         dialogConfig.data = {
-            title: title,
+            dialogTitle: dialogTitle,
             kanban: kanban
         }
         this.dialog

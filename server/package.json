@@ -4,8 +4,9 @@
     "description": "Kanban board server",
     "main": " server.ts",
     "scripts": {
-        "start": "ts-node server.ts -production",
-        "dev": "nodemon server -development"
+        "start": "ts-node server.ts",
+        "dev1": "nodemon server",
+        "dev": "ts-node-dev --respawn server.ts"
     },
     "keywords": [],
     "author": "Nikola Pilipovic (npilipovic86@gmail.com)",
@@ -14,16 +15,17 @@
         "@types/node": "^13.5.1",
         "body-parser": "^1.18.3",
         "express": "^4.16.3",
+        "helmet": "^3.21.1",
         "mysql": "^2.16.0",
         "nodemon": "^1.18.5",
         "npm": "^6.4.1",
         "reflect-metadata": "^0.1.12",
         "ts-node": "^3.3.0",
         "typeorm": "^0.2.8",
-        "typescript": "~3.1.1",
-        "helmet": "^3.21.1"
+        "typescript": "~3.1.1"
     },
     "devDependencies": {
+        "ts-node-dev": "^1.0.0-pre.44",
         "typescript": "~3.1.1"
     }
 }

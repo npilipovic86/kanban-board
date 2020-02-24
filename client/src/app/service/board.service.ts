@@ -8,7 +8,7 @@ import { Task } from '../model/task'
     providedIn: 'root'
 })
 export class BoardService {
-    readonly path = '/api/kanbans'
+    readonly path = '/api/boards'
 
     constructor(private _http: HttpClient) {}
 
@@ -17,8 +17,6 @@ export class BoardService {
     }
     getById(id: String): Observable<Board> {
         return this._http.get<Board>(this.path + '/' + id)
-        // .map((result: Response) => result.json())
-        // .catch(this.getError)
     }
     delete(id: string): Observable<void> {
         return this._http.delete<void>(this.path + '/' + id)
@@ -29,8 +27,8 @@ export class BoardService {
     update(pbe: Board): Observable<Board> {
         return this._http.put<Board>(this.path + '/' + pbe.id, pbe)
     }
-    saveNewTaskInKanban(kanbanId: string, task: Task): Observable<Task> {
-        return this._http.post<Task>(this.path + '/' + kanbanId, task)
+    saveNewTaskInKanban(boardId: string, task: Task): Observable<Task> {
+        return this._http.post<Task>(this.path + '/' + boardId + '/tasks', task)
     }
 
     saveNewList(boardId: string, value: any) {

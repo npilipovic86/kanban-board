@@ -21,7 +21,7 @@ export class KanbanDialogComponent implements OnInit {
         @Inject(MAT_DIALOG_DATA) data,
         private _service: BoardService
     ) {
-        this.dialogTitle = data.title
+        this.dialogTitle = data.dialogTitle
         this.boardId = data.boardId
     }
 

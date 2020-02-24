@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import { TaskRepository } from '../repositories/task.repository'
 
+
 export const getAll = async (req: Request, res: Response) => {
     let repository: TaskRepository = new TaskRepository()
     let retVal
@@ -61,3 +62,4 @@ export const update = async (req: Request, res: Response) => {
     }
     retVal ? res.status(200).send(retVal) : res.sendStatus(400)
 }
+

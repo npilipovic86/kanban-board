@@ -16,36 +16,29 @@ import { TaskDialogComponent } from '../task-dialog/task-dialog.component'
     styleUrls: ['./board-view.component.scss']
 })
 export class BoardViewComponent implements OnInit {
-    kanban: Board
+    board: Board
     lists: any = []
 
-    kanbans: Board[]
-
-    constructor(
-        // private _boardService: BoardService,
-        private _kanbanService: BoardService,
-        private _taskService: TaskService,
-        private route: ActivatedRoute,
-        private dialog: MatDialog
-    ) {}
+    constructor(private _boardService: BoardService, private _taskService: TaskService, private route: ActivatedRoute, private dialog: MatDialog) {}
 
     ngOnInit() {
-        this.getKanban()
+        this.getBoard()
     }
-    deleteTask(id: string) {
-        console.log(id)
+
+    deleteTask(id: string): void {
         this.confirm()
             .afterClosed()
             .subscribe((result) => {
                 if (result) {
                     this._taskService.delete(id).subscribe(() => {
-                        let index = this.kanban.tasks.findIndex((e) => e.id === id)
-                        this.kanban.tasks.splice(index, 1)
+                        let index = this.board.tasks.findIndex((e) => e.id === id)
+                        this.board.tasks.splice(index, 1)
                         this.splitTasksByStatus()
                     })
                 }
             })
     }
+
     confirm(): any {
         return this.dialog.open(ConfirmationDialogComponent, {
             width: '350px',
@@ -53,24 +46,25 @@ export class BoardViewComponent implements OnInit {
         })
     }
 
-    dropListConnectedTo() {
-        return this.kanban.lists.map((e) => e.title)
+    dropListConnectedTo(): string[] {
+        return this.board.lists.map((e) => e.title)
     }
+
     openDialogForNewTask(): void {
-        this.openDialog('Create New Task', new Task())
+        this.openDialogForTask('Create New Task', new Task())
     }
 
     openDialogForEditTask(task: Task): void {
-        this.openDialog('Update Task', task)
+        this.openDialogForTask('Update Task', task)
     }
 
-    openDialog(title: string, task: Task): void {
+    openDialogForTask(dialogTitle: string, task: Task): void {
         const dialogConfig = new MatDialogConfig<any>()
         dialogConfig.autoFocus = true
         dialogConfig.data = {
-            title: title,
-            boardId: this.route.snapshot.paramMap.get('id'),
-            column: this.kanban.lists[0].title,
+            dialogTitle: dialogTitle,
+            boardId: this.board.id,
+            column: this.board.lists[0].title,
             task: task
         }
         this.dialog
@@ -78,45 +72,47 @@ export class BoardViewComponent implements OnInit {
             .afterClosed()
             .subscribe((result) => {
                 if (result) {
-                    let res = this.kanban.tasks.find((e) => e.id === result.id)
+                    let res = this.board.tasks.find((e) => e.id === result.id)
                     if (!res) {
-                        this.kanban.tasks.push(result)
+                        this.board.tasks.push(result)
                     } else {
-                        let index = this.kanban.tasks.findIndex((e) => e.id === result.id)
-                        this.kanban.tasks[index] = result
+                        let index = this.board.tasks.findIndex((e) => e.id === result.id)
+                        this.board.tasks[index] = result
                     }
                     this.splitTasksByStatus()
                 }
             })
     }
 
-    openDialogForEditList(list: string) {
+    openDialogForEditList(): void {
         event.cancelBubble = true
         if (event.stopPropagation) event.stopPropagation()
-        this.openDialogForList('Update Kanban')
+        this.openDialogForList('Update List')
     }
+
     openDialogForNewList(): void {
-        this.openDialogForList('Create new Kanban')
+        this.openDialogForList('Create new List')
     }
-    openDialogForList(title: string): void {
+
+    openDialogForList(dialogTitle: string): void {
         const dialogConfig = new MatDialogConfig()
         dialogConfig.autoFocus = true
         dialogConfig.data = {
-            title: title,
-            boardId: this.route.snapshot.paramMap.get('id')
+            dialogTitle: dialogTitle,
+            boardId: this.board.id
         }
         this.dialog
             .open(KanbanDialogComponent, dialogConfig)
             .afterClosed()
             .subscribe((result) => {
                 if (result) {
-                    this.kanban.lists.push(result)
-                } else {
-                    this.getKanban()
+                    this.board.lists.push(result)
+                    this.getBoard()
                 }
             })
     }
-    drop(event: CdkDragDrop<any>) {
+
+    drop(event: CdkDragDrop<any>): void {
         if (event.previousContainer === event.container) {
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex)
         } else {
@@ -125,36 +121,29 @@ export class BoardViewComponent implements OnInit {
         }
     }
 
-    private updateTaskStatusAfterDragDrop(event: CdkDragDrop<string[], string[]>) {
+    private updateTaskStatusAfterDragDrop(event: CdkDragDrop<string[], string[]>): void {
         let taskId = event.item.element.nativeElement.id
-
         let containerId = event.container.id
-
-        let task = this.kanban.tasks.find((t) => t.id === taskId)
-
+        let task = this.board.tasks.find((t) => t.id === taskId)
         if (task) this.updateTaskStatus(task, containerId)
     }
 
-    private getKanban(): void {
+    private getBoard(): void {
         const id = this.route.snapshot.paramMap.get('id')
-
-        this._kanbanService.getById(id).subscribe((response: Board) => {
-            this.kanban = response
+        this._boardService.getById(id).subscribe((response: Board) => {
+            this.board = response
             this.splitTasksByStatus()
         })
     }
 
     private updateTaskStatus(task: Task, containerId: string): void {
         task.status = containerId
-
         this._taskService.update(task).subscribe()
     }
 
     private splitTasksByStatus(): void {
-        this.kanban.lists.forEach((l) => {
-            this.lists[l.title] = this.kanban.tasks.filter((t) => t.status === l.title)
+        this.board.lists.forEach((l) => {
+            this.lists[l.title] = this.board.tasks.filter((t) => t.status === l.title)
         })
-
-        console.log('lists', this.lists)
     }
 }

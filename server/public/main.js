@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"page-title\">\n        <h1>{{ kanban?.title }}</h1>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"openDialogForNewTask()\">Create New Task</button>\n        <button mat-raised-button (click)=\"openDialogForNewList()\">Create New List</button>\n    </div>\n    <div class=\"kanban-board\" *ngIf=\"kanban\">\n        <div class=\"list-container\" *ngFor=\"let item of kanban.lists\">\n            <h2>{{ item.title }}</h2>\n            <div\n                cdkDropList\n                id=\"{{ item.title }}\"\n                [cdkDropListData]=\"lists[item.title]\"\n                [cdkDropListConnectedTo]=\"dropListConnectedTo()\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div class=\"sticky-note\" *ngFor=\"let task of lists[item.title]\" cdkDrag [style.background-color]=\"task.color\" id=\"{{ task.id }}\">\n                    <app-task [task]=\"task\" (delete)=\"deleteTask($event)\" (edit)=\"openDialogForEditTask($event)\"></app-task>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\n    <div class=\"page-title\">\n        <h1>{{ board?.title }}</h1>\n    </div>\n    <div>\n        <button mat-raised-button (click)=\"openDialogForNewTask()\">Create New Task</button>\n        <button mat-raised-button (click)=\"openDialogForNewList()\">Create New List</button>\n    </div>\n    <div class=\"kanban-board\" *ngIf=\"board\">\n        <div class=\"list-container\" *ngFor=\"let item of board.lists\">\n            <h2>{{ item.title }}</h2>\n            <div\n                cdkDropList\n                id=\"{{ item.title }}\"\n                [cdkDropListData]=\"lists[item.title]\"\n                [cdkDropListConnectedTo]=\"dropListConnectedTo()\"\n                class=\"board-list\"\n                (cdkDropListDropped)=\"drop($event)\"\n            >\n                <div class=\"sticky-note\" *ngFor=\"let task of lists[item.title]\" cdkDrag [style.background-color]=\"task.color\" id=\"{{ task.id }}\">\n                    <app-task [task]=\"task\" (delete)=\"deleteTask($event)\" (edit)=\"openDialogForEditTask($event)\"></app-task>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>\n");
 
 /***/ }),
 
@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1 mat-dialog-title>{{ kanbanTitle }}</h1>\n\n<mat-dialog-content [formGroup]=\"form\" class=\"dialog-content\">\n    <mat-form-field>\n        <mat-label>Title</mat-label>\n        <input matInput placeholder=\"Title\" formControlName=\"title\" class=\"task-title\" />\n        <mat-error *ngIf=\"form.get('title').touched && form.get('title').hasError('required')\">\n            <strong>Required</strong>\n        </mat-error>\n    </mat-form-field>\n\n    <mat-form-field>\n        <mat-label>Color</mat-label>\n        <input matInput placeholder=\"Color\" type=\"color\" formControlName=\"color\" [value]=\"form.value.color\" />\n        <mat-error *ngIf=\"form.get('color').touched && form.get('color').hasError('required')\">\n            <strong>Required</strong>\n        </mat-error>\n    </mat-form-field>\n    <mat-form-field>\n        <mat-label>Description</mat-label>\n        <textarea matInput placeholder=\"Description\" formControlName=\"description\" class=\"description-area\"> </textarea>\n        <mat-error *ngIf=\"form.get('description').touched && form.get('description').hasError('required')\">\n            <strong>Required</strong>\n        </mat-error>\n    </mat-form-field>\n</mat-dialog-content>\n\n<mat-dialog-actions>\n    <button class=\"mat-raised-button\" (click)=\"close()\">Close</button>\n    <button class=\"mat-raised-button mat-primary\" (click)=\"save()\">Save</button>\n</mat-dialog-actions>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1 mat-dialog-title>{{ dialogTitle }}</h1>\n\n<mat-dialog-content [formGroup]=\"form\" class=\"dialog-content\">\n    <mat-form-field>\n        <mat-label>Title</mat-label>\n        <input matInput placeholder=\"Title\" formControlName=\"title\" class=\"task-title\" />\n        <mat-error *ngIf=\"form.get('title').touched && form.get('title').hasError('required')\">\n            <strong>Required</strong>\n        </mat-error>\n    </mat-form-field>\n\n    <mat-form-field>\n        <mat-label>Color</mat-label>\n        <input matInput placeholder=\"Color\" type=\"color\" formControlName=\"color\" [value]=\"form.value.color\" />\n        <mat-error *ngIf=\"form.get('color').touched && form.get('color').hasError('required')\">\n            <strong>Required</strong>\n        </mat-error>\n    </mat-form-field>\n    <mat-form-field>\n        <mat-label>Description</mat-label>\n        <textarea matInput placeholder=\"Description\" formControlName=\"description\" class=\"description-area\"> </textarea>\n        <mat-error *ngIf=\"form.get('description').touched && form.get('description').hasError('required')\">\n            <strong>Required</strong>\n        </mat-error>\n    </mat-form-field>\n</mat-dialog-content>\n\n<mat-dialog-actions>\n    <button class=\"mat-raised-button\" (click)=\"close()\">Close</button>\n    <button class=\"mat-raised-button mat-primary\" (click)=\"save()\">Save</button>\n</mat-dialog-actions>\n");
 
 /***/ }),
 
@@ -562,7 +562,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".dialog-content {\n  width: 450px;\n  min-height: 240px;\n}\n\n.kanban-title {\n  width: 400px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL21hanN0b3Ivd29ya3NwYWNlL2thbmJhbi1ib2FyZC9jbGllbnQvc3JjL2FwcC9jb21wb25lbnQvYm9hcmQtZGlhbG9nL2JvYXJkLWRpYWxvZy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50L2JvYXJkLWRpYWxvZy9ib2FyZC1kaWFsb2cuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxZQUFBO0VBQ0EsaUJBQUE7QUNDSjs7QURFQTtFQUNJLFlBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudC9ib2FyZC1kaWFsb2cvYm9hcmQtZGlhbG9nLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmRpYWxvZy1jb250ZW50IHtcbiAgICB3aWR0aDogNDUwcHg7XG4gICAgbWluLWhlaWdodDogMjQwcHg7XG59XG5cbi5rYW5iYW4tdGl0bGUge1xuICAgIHdpZHRoOiA0MDBweDtcbn1cbiIsIi5kaWFsb2ctY29udGVudCB7XG4gIHdpZHRoOiA0NTBweDtcbiAgbWluLWhlaWdodDogMjQwcHg7XG59XG5cbi5rYW5iYW4tdGl0bGUge1xuICB3aWR0aDogNDAwcHg7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".dialog-content {\n  min-height: 140px;\n}\n\n.kanban-title {\n  width: 400px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL21hanN0b3Ivd29ya3NwYWNlL2thbmJhbi1ib2FyZC9jbGllbnQvc3JjL2FwcC9jb21wb25lbnQvYm9hcmQtZGlhbG9nL2JvYXJkLWRpYWxvZy5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvY29tcG9uZW50L2JvYXJkLWRpYWxvZy9ib2FyZC1kaWFsb2cuY29tcG9uZW50LnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtBQ0NKOztBREVBO0VBQ0ksWUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50L2JvYXJkLWRpYWxvZy9ib2FyZC1kaWFsb2cuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZGlhbG9nLWNvbnRlbnQge1xuICAgIG1pbi1oZWlnaHQ6IDE0MHB4O1xufVxuXG4ua2FuYmFuLXRpdGxlIHtcbiAgICB3aWR0aDogNDAwcHg7XG59XG4iLCIuZGlhbG9nLWNvbnRlbnQge1xuICBtaW4taGVpZ2h0OiAxNDBweDtcbn1cblxuLmthbmJhbi10aXRsZSB7XG4gIHdpZHRoOiA0MDBweDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -592,7 +592,7 @@ let BoardDialogComponent = class BoardDialogComponent {
         this.fb = fb;
         this.dialogRef = dialogRef;
         this._service = _service;
-        this.dialogTitle = data.title;
+        this.dialogTitle = data.dialogTitle;
         console.log('TCL: BoardDialogComponent -> data', data);
         this.board = data.kanban;
         this.showDeleteButton = false;
@@ -688,27 +688,24 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let BoardViewComponent = class BoardViewComponent {
-    constructor(
-    // private _boardService: BoardService,
-    _kanbanService, _taskService, route, dialog) {
-        this._kanbanService = _kanbanService;
+    constructor(_boardService, _taskService, route, dialog) {
+        this._boardService = _boardService;
         this._taskService = _taskService;
         this.route = route;
         this.dialog = dialog;
         this.lists = [];
     }
     ngOnInit() {
-        this.getKanban();
+        this.getBoard();
     }
     deleteTask(id) {
-        console.log(id);
         this.confirm()
             .afterClosed()
             .subscribe((result) => {
             if (result) {
                 this._taskService.delete(id).subscribe(() => {
-                    let index = this.kanban.tasks.findIndex((e) => e.id === id);
-                    this.kanban.tasks.splice(index, 1);
+                    let index = this.board.tasks.findIndex((e) => e.id === id);
+                    this.board.tasks.splice(index, 1);
                     this.splitTasksByStatus();
                 });
             }
@@ -721,21 +718,21 @@ let BoardViewComponent = class BoardViewComponent {
         });
     }
     dropListConnectedTo() {
-        return this.kanban.lists.map((e) => e.title);
+        return this.board.lists.map((e) => e.title);
     }
     openDialogForNewTask() {
-        this.openDialog('Create New Task', new src_app_model_task__WEBPACK_IMPORTED_MODULE_5__["Task"]());
+        this.openDialogForTask('Create New Task', new src_app_model_task__WEBPACK_IMPORTED_MODULE_5__["Task"]());
     }
     openDialogForEditTask(task) {
-        this.openDialog('Update Task', task);
+        this.openDialogForTask('Update Task', task);
     }
-    openDialog(title, task) {
+    openDialogForTask(dialogTitle, task) {
         const dialogConfig = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogConfig"]();
         dialogConfig.autoFocus = true;
         dialogConfig.data = {
-            title: title,
-            boardId: this.route.snapshot.paramMap.get('id'),
-            column: this.kanban.lists[0].title,
+            dialogTitle: dialogTitle,
+            boardId: this.board.id,
+            column: this.board.lists[0].title,
             task: task
         };
         this.dialog
@@ -743,43 +740,41 @@ let BoardViewComponent = class BoardViewComponent {
             .afterClosed()
             .subscribe((result) => {
             if (result) {
-                let res = this.kanban.tasks.find((e) => e.id === result.id);
+                let res = this.board.tasks.find((e) => e.id === result.id);
                 if (!res) {
-                    this.kanban.tasks.push(result);
+                    this.board.tasks.push(result);
                 }
                 else {
-                    let index = this.kanban.tasks.findIndex((e) => e.id === result.id);
-                    this.kanban.tasks[index] = result;
+                    let index = this.board.tasks.findIndex((e) => e.id === result.id);
+                    this.board.tasks[index] = result;
                 }
                 this.splitTasksByStatus();
             }
         });
     }
-    openDialogForEditList(list) {
+    openDialogForEditList() {
         event.cancelBubble = true;
         if (event.stopPropagation)
             event.stopPropagation();
-        this.openDialogForList('Update Kanban');
+        this.openDialogForList('Update List');
     }
     openDialogForNewList() {
-        this.openDialogForList('Create new Kanban');
+        this.openDialogForList('Create new List');
     }
-    openDialogForList(title) {
+    openDialogForList(dialogTitle) {
         const dialogConfig = new _angular_material__WEBPACK_IMPORTED_MODULE_3__["MatDialogConfig"]();
         dialogConfig.autoFocus = true;
         dialogConfig.data = {
-            title: title,
-            boardId: this.route.snapshot.paramMap.get('id')
+            dialogTitle: dialogTitle,
+            boardId: this.board.id
         };
         this.dialog
             .open(_kanban_dialog_kanban_dialog_component__WEBPACK_IMPORTED_MODULE_9__["KanbanDialogComponent"], dialogConfig)
             .afterClosed()
             .subscribe((result) => {
             if (result) {
-                this.kanban.lists.push(result);
-            }
-            else {
-                this.getKanban();
+                this.board.lists.push(result);
+                this.getBoard();
             }
         });
     }
@@ -795,14 +790,14 @@ let BoardViewComponent = class BoardViewComponent {
     updateTaskStatusAfterDragDrop(event) {
         let taskId = event.item.element.nativeElement.id;
         let containerId = event.container.id;
-        let task = this.kanban.tasks.find((t) => t.id === taskId);
+        let task = this.board.tasks.find((t) => t.id === taskId);
         if (task)
             this.updateTaskStatus(task, containerId);
     }
-    getKanban() {
+    getBoard() {
         const id = this.route.snapshot.paramMap.get('id');
-        this._kanbanService.getById(id).subscribe((response) => {
-            this.kanban = response;
+        this._boardService.getById(id).subscribe((response) => {
+            this.board = response;
             this.splitTasksByStatus();
         });
     }
@@ -811,10 +806,9 @@ let BoardViewComponent = class BoardViewComponent {
         this._taskService.update(task).subscribe();
     }
     splitTasksByStatus() {
-        this.kanban.lists.forEach((l) => {
-            this.lists[l.title] = this.kanban.tasks.filter((t) => t.status === l.title);
+        this.board.lists.forEach((l) => {
+            this.lists[l.title] = this.board.tasks.filter((t) => t.status === l.title);
         });
-        console.log('lists', this.lists);
     }
 };
 BoardViewComponent.ctorParameters = () => [
@@ -962,7 +956,7 @@ ConfirmationDialogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudC9rYW5iYW4tZGlhbG9nL2thbmJhbi1kaWFsb2cuY29tcG9uZW50LnNjc3MifQ== */");
+/* harmony default export */ __webpack_exports__["default"] = (".dialog-content {\n  min-height: 140px;\n}\n\n.kanban-title {\n  width: 400px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9ob21lL21hanN0b3Ivd29ya3NwYWNlL2thbmJhbi1ib2FyZC9jbGllbnQvc3JjL2FwcC9jb21wb25lbnQva2FuYmFuLWRpYWxvZy9rYW5iYW4tZGlhbG9nLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9jb21wb25lbnQva2FuYmFuLWRpYWxvZy9rYW5iYW4tZGlhbG9nLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksaUJBQUE7QUNDSjs7QURFQTtFQUNJLFlBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2NvbXBvbmVudC9rYW5iYW4tZGlhbG9nL2thbmJhbi1kaWFsb2cuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZGlhbG9nLWNvbnRlbnQge1xuICAgIG1pbi1oZWlnaHQ6IDE0MHB4O1xufVxuXG4ua2FuYmFuLXRpdGxlIHtcbiAgICB3aWR0aDogNDAwcHg7XG59XG4iLCIuZGlhbG9nLWNvbnRlbnQge1xuICBtaW4taGVpZ2h0OiAxNDBweDtcbn1cblxuLmthbmJhbi10aXRsZSB7XG4gIHdpZHRoOiA0MDBweDtcbn0iXX0= */");
 
 /***/ }),
 
@@ -991,7 +985,7 @@ let KanbanDialogComponent = class KanbanDialogComponent {
         this.fb = fb;
         this.dialogRef = dialogRef;
         this._service = _service;
-        this.dialogTitle = data.title;
+        this.dialogTitle = data.dialogTitle;
         this.boardId = data.boardId;
     }
     ngOnInit() {
@@ -1103,11 +1097,11 @@ let MainComponent = class MainComponent {
     openDialogForNew() {
         this.openDialog('Create new Board', new src_app_model_board__WEBPACK_IMPORTED_MODULE_3__["Board"]());
     }
-    openDialog(title, kanban) {
+    openDialog(dialogTitle, kanban) {
         const dialogConfig = new _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDialogConfig"]();
         dialogConfig.autoFocus = true;
         dialogConfig.data = {
-            title: title,
+            dialogTitle: dialogTitle,
             kanban: kanban
         };
         this.dialog
@@ -1195,7 +1189,7 @@ let TaskDialogComponent = class TaskDialogComponent {
         this._kanbanService = _kanbanService;
         this._taskService = _taskService;
         this._formService = _formService;
-        this.kanbanTitle = data.title;
+        this.dialogTitle = data.dialogTitle;
         this.column = data.column;
         this.kanbanId = data.boardId;
         this.task = data.task;
@@ -1367,15 +1361,13 @@ __webpack_require__.r(__webpack_exports__);
 let BoardService = class BoardService {
     constructor(_http) {
         this._http = _http;
-        this.path = '/api/kanbans';
+        this.path = '/api/boards';
     }
     getAll() {
         return this._http.get(this.path);
     }
     getById(id) {
         return this._http.get(this.path + '/' + id);
-        // .map((result: Response) => result.json())
-        // .catch(this.getError)
     }
     delete(id) {
         return this._http.delete(this.path + '/' + id);
@@ -1386,8 +1378,8 @@ let BoardService = class BoardService {
     update(pbe) {
         return this._http.put(this.path + '/' + pbe.id, pbe);
     }
-    saveNewTaskInKanban(kanbanId, task) {
-        return this._http.post(this.path + '/' + kanbanId, task);
+    saveNewTaskInKanban(boardId, task) {
+        return this._http.post(this.path + '/' + boardId + '/tasks', task);
     }
     saveNewList(boardId, value) {
         return this._http.post(this.path + '/' + boardId + '/lists', value);
